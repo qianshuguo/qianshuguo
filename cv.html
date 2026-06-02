@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>CV — Qianshu Guo</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #e8e4de;
+            --text: #2d2926;
+            --muted: #7a7068;
+            --border: #d0cbc4;
+            --block-bg: #f0ede8;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 17px;
+            line-height: 1.7;
+            min-height: 100%;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 48px;
+            background-color: var(--bg);
+            z-index: 100;
+        }
+        .site-nav .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .site-nav .links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .site-nav .links a {
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .04em;
+            transition: color 0.2s;
+        }
+        .site-nav .links a:hover { color: var(--text); }
+        .site-nav .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border);
+            padding: 5px 14px;
+            border-radius: 2px;
+            transition: border-color 0.2s;
+        }
+        .site-nav .download-btn:hover { border-color: var(--text) !important; }
+        .site-nav .download-btn svg { fill: var(--text); }
+
+        .cv-page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 40px 100px;
+        }
+
+        .cv-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+        .cv-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 68px);
+            font-weight: 400;
+            letter-spacing: .02em;
+            margin-bottom: 16px;
+        }
+        .cv-header .contact {
+            font-size: 14px;
+            color: var(--muted);
+            font-style: italic;
+            line-height: 2;
+        }
+        .cv-header .contact a {
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1px;
+            transition: color 0.2s;
+        }
+        .cv-header .contact a:hover { color: var(--text); }
+
+        .cv-block {
+            background-color: var(--block-bg);
+            border-radius: 4px;
+            padding: 36px 40px;
+            margin-bottom: 16px;
+        }
+        .cv-block .block-label {
+            font-family: 'EB Garamond', serif;
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        /* Education */
+        .edu-entry { margin-bottom: 28px; }
+        .edu-entry:last-child { margin-bottom: 0; }
+        .edu-school-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .edu-school {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .edu-location {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--muted);
+        }
+        .edu-degree {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+        .edu-dates {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .edu-note {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        /* Skills */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+        .skills-list li {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: baseline;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 16px;
+        }
+        .skills-list li:first-child { padding-top: 0; }
+        .skills-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .skill-key {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 500;
+            min-width: 200px;
+        }
+        .skill-val {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* Experience */
+        .exp-entry {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .exp-entry:first-child { padding-top: 0; }
+        .exp-entry:last-child { border-bottom: none; padding-bottom: 0; }
+        .exp-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+        .exp-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .exp-date {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+        .exp-role {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .exp-entry ul { padding-left: 18px; }
+        .exp-entry ul li {
+            font-size: 15px;
+            line-height: 1.65;
+            margin-bottom: 2px;
+            color: var(--text);
+        }
+
+        /* Awards */
+        .awards-list {
+            list-style: none;
+            padding: 0;
+        }
+        .awards-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .awards-list li:first-child { padding-top: 0; }
+        .awards-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .award-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+        .award-prize {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            .site-nav { padding: 18px 24px; }
+            .cv-page { padding: 100px 24px 80px; }
+            .cv-block { padding: 28px 24px; }
+            .site-nav .links { gap: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a class="name" href="index.html">Qianshu Guo</a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a class="download-btn" href="assets/CV.pdf" download="CV_QianshuGuo.pdf">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/>
+                </svg>
+                PDF
+            </a>
+        </div>
+    </nav>
+
+    <div class="cv-page">
+
+        <div class="cv-header">
+            <h1>Qianshu Guo</h1>
+            <div class="contact">
+                <a href="mailto:qianhu.guo@outlook.com">qianhu.guo@outlook.com</a><br>
+                New York City, USA
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="cv-block">
+            <div class="block-label">Education</div>
+
+            <div class="edu-entry">
+                <div class="edu-school-row">
+                    <span class="edu-school">New York University</span>
+                    <span class="edu-location">New York, USA</span>
+                </div>
+                <div class="edu-degree">Master of Music Technology</div>
+                <div class="edu-dates">September 2025 – May 2027</div>
+                <div class="edu-note">Top 5% in major · Courses: MIR, Machine Learning (TensorFlow, PyTorch), Game Audio (Wwise, Unity, Unreal Engine), Spatial &amp; Immersive Audio</div>
+            </div>
+
+            <div class="edu-entry">
+                <div class="edu-school-row">
+                    <span class="edu-school">Peabody Institute, Johns Hopkins University</span>
+                    <span class="edu-location">Baltimore, USA</span>
+                </div>
+                <div class="edu-degree">Bachelor of Music in New Media Music</div>
+                <div class="edu-dates">September 2021 – May 2025</div>
+                <div class="edu-note">Ranked 1st in major · GPA: 3.93 / 4.00 · Courses: Film &amp; Game Scoring, Sound Design, Recording, Jazz Piano, Conducting</div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="cv-block">
+            <div class="block-label">Skills</div>
+            <ul class="skills-list">
+                <li>
+                    <span class="skill-key">Languages</span>
+                    <span class="skill-val">Chinese (native), English (fluent), Korean (conversational)</span>
+                </li>
+                <li>
+                    <span class="skill-key">DAWs &amp; Notation</span>
+                    <span class="skill-val">Logic Pro, Cubase, Ableton Live, Pro Tools, Sibelius</span>
+                </li>
+                <li>
+                    <span class="skill-key">Game Audio</span>
+                    <span class="skill-val">Wwise, Unity, Unreal Engine</span>
+                </li>
+                <li>
+                    <span class="skill-key">Programming</span>
+                    <span class="skill-val">Python, C++, Java, C</span>
+                </li>
+                <li>
+                    <span class="skill-key">Machine Learning</span>
+                    <span class="skill-val">TensorFlow, PyTorch, MIR (librosa)</span>
+                </li>
+                <li>
+                    <span class="skill-key">Instruments</span>
+                    <span class="skill-val">Piano (professional), Acoustic Guitar, Electric Guitar</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Experience -->
+        <div class="cv-block">
+            <div class="block-label">Experience</div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Hangzhou Xihe Culture Technology</span>
+                    <span class="exp-date">Sep 2024 – Jan 2025</span>
+                </div>
+                <div class="exp-role">Picture Book Music Composer</div>
+                <ul>
+                    <li>Composed background music and sound effects for 12 children's picture books, including <em>My Mom</em>, <em>The Runaway Bunny</em>, and <em>A Seed's Journey</em>; published on the "美妈讲绘本" app with 100,000+ total plays.</li>
+                    <li>Designed stage music for the 2024 National Children's Picture Book Story Exhibition (Zhejiang Provincial): opening, awards ceremony, and guest performance cues.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Peabody Institute, Johns Hopkins University</span>
+                    <span class="exp-date">Aug 2022 – Jun 2023</span>
+                </div>
+                <div class="exp-role">Recording Assistant &amp; Engineer</div>
+                <ul>
+                    <li>Assisted professional recording sessions for opera, jazz ensemble, concerto, and choral works (including <em>Cendrillon Act 2</em>) in Peabody's studio facility.</li>
+                    <li>Operated Neve console; handled mic placement, signal routing, and monitor management.</li>
+                    <li>Completed post-editing and mixing in Pro Tools and Pyramix across country, pop, and chamber music projects; select recordings archived by the conservatory.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Hangzhou Xuanye Digital Technology</span>
+                    <span class="exp-date">Jun 2024 – Aug 2024</span>
+                </div>
+                <div class="exp-role">Music Intern</div>
+                <ul>
+                    <li>Researched major AI music platforms; produced a comparative report on algorithms, membership models, and use cases to inform product strategy.</li>
+                    <li>Composed 3-act score for the mini-series <em>玉兰记</em>, incorporating traditional Nuo opera elements; supervised on-set audio recording sessions.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Awards -->
+        <div class="cv-block">
+            <div class="block-label">Awards &amp; Recognition</div>
+            <ul class="awards-list">
+                <li>
+                    <span class="award-name">John &amp; Aileen Harness Memorial Scholarship — Peabody Institute</span>
+                    <span class="award-prize">May 2023</span>
+                </li>
+                <li>
+                    <span class="award-name">Richard Franco Goldman Memorial Scholarship — Peabody Institute</span>
+                    <span class="award-prize">May 2023</span>
+                </li>
+                <li>
+                    <span class="award-name">Featured composer interview — Shoutout LA</span>
+                    <span class="award-prize">Oct 2024</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

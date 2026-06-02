@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Works — Qianshu Guo</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='theme-color' content='#e8e4de'/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg: #e8e4de; --text: #2d2926; --muted: #7a7068; --border: #d0cbc4; }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .site-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+        }
+        .site-nav .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .site-nav .links {
+            display: flex;
+            gap: 32px;
+        }
+        .site-nav .links a {
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .04em;
+            transition: color 0.2s;
+        }
+        .site-nav .links a:hover { color: var(--text); }
+
+        .page-content {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            margin-bottom: 40px;
+            letter-spacing: .01em;
+        }
+
+        /* ── Filter tabs ── */
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border);
+        }
+        .filter-tabs button {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            padding: 10px 20px 10px 0;
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .filter-tabs button:first-child { padding-left: 0; }
+        .filter-tabs button:hover { color: var(--text); }
+        .filter-tabs button.active {
+            color: var(--text);
+            border-bottom-color: var(--text);
+        }
+
+        /* ── Work items ── */
+        .work-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .work-item:first-of-type { border-top: 1px solid var(--border); }
+
+        .work-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .work-desc {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .work-links a {
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .04em;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1px;
+            margin-right: 16px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .work-links a:hover { color: var(--text); border-color: var(--text); }
+
+        .work-item.hidden { display: none; }
+
+        .no-results {
+            display: none;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--muted);
+            padding: 20px 0;
+        }
+        .no-results.visible { display: block; }
+
+        /* ── Showreel ── */
+        .showreel-section {
+            margin-bottom: 56px;
+        }
+        .showreel-label {
+            font-size: 12px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        /* ── Responsive video embed ── */
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #1a1816;
+            margin: 12px 0 0;
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+            .site-nav { padding: 20px 24px; }
+            .page-content { padding: 40px 24px 80px; }
+            .site-nav .links { gap: 20px; }
+            .filter-tabs button { padding: 10px 14px 10px 0; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a class="name" href="index.html">Qianshu Guo</a>
+        <div class="links">
+            <a href="about.html">About</a>
+            <a href="works.html">Works</a>
+            <a href="contact.html">Contact</a>
+            <a href="cv.html">CV</a>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="page-title">Works</div>
+
+        <!-- Showreel -->
+        <div class="showreel-section">
+            <div class="showreel-label">Showreel</div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/WJOovnEl3wg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="active" data-filter="all">All</button>
+            <button data-filter="compositions">Compositions</button>
+            <button data-filter="movies">Film Scores</button>
+            <button data-filter="trailers">Trailers</button>
+            <button data-filter="video-games">Game</button>
+            <button data-filter="documentaries">Documentaries</button>
+            <button data-filter="sound-design">Sound Design</button>
+        </div>
+
+        <div id="works-list">
+
+            <!-- Compositions -->
+            <div class="work-item" data-category="compositions">
+                <div class="work-title">Glimmer</div>
+                <div class="work-desc">2024 · Orchestra — Written for and performed by the Peabody Symphony Orchestra.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/8hSRID5KJuM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="compositions">
+                <div class="work-title">反击面具人 (Strike Back, Masked Man)</div>
+                <div class="work-desc">2024 · Orchestra — Written for and performed by the Peabody Symphony Orchestra.</div>
+            </div>
+
+            <div class="work-item" data-category="compositions">
+                <div class="work-title">String Quartet in F major</div>
+                <div class="work-desc">2024 · String Quartet — Written for the New York ETHEL String Quartet; premiered at a Peabody Institute concert.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/laXtgvb-2Wo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="compositions">
+                <div class="work-title">牛奶咖啡 / 梨雨 / 空壳</div>
+                <div class="work-desc">2025 · Pop singles — Lyrics, composition, arrangement, vocal recording, mixing &amp; mastering. <em>空壳</em> selected for the Peabody Institute's excellent graduation works showcase.</div>
+            </div>
+
+            <div class="work-item" data-category="compositions">
+                <div class="work-title">有梦的人</div>
+                <div class="work-desc">2025 · Song — Commissioned theme song for the Family-School Co-Education Intelligent Parents Workshop, Hangzhou Jianlan Middle School. Selected for the Peabody Institute's excellent graduation works showcase.</div>
+            </div>
+
+            <!-- Film Scores -->
+            <div class="work-item" data-category="movies">
+                <div class="work-title">She Needs A Hug</div>
+                <div class="work-desc">2022 · Short film — Original score. Drama. Directed by NYU student filmmaker.</div>
+            </div>
+
+            <div class="work-item" data-category="movies">
+                <div class="work-title">Donut</div>
+                <div class="work-desc">2022 · Short film — Original score. Campus drama. Directed by NYU student filmmaker.</div>
+            </div>
+
+            <div class="work-item" data-category="movies">
+                <div class="work-title">The Nights</div>
+                <div class="work-desc">2022 · Short film — Original score &amp; actor. Experimental. Directed by NYU student filmmaker.</div>
+            </div>
+
+            <div class="work-item" data-category="movies">
+                <div class="work-title">Incongruity of Meaning</div>
+                <div class="work-desc">Short film — Original score.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/cgOOuv4xpU0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <!-- Trailers -->
+            <div class="work-item" data-category="trailers">
+                <div class="work-title">1917 Trailer Rescore</div>
+                <div class="work-desc">Original score — Trailer rescore.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/ze5mjvVK5Hk" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="trailers">
+                <div class="work-title">Star Wars IX Teaser Rescore</div>
+                <div class="work-desc">Original score — Teaser rescore.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/0Z_k9OMxUAM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <!-- Video Games -->
+            <div class="work-item" data-category="video-games">
+                <div class="work-title">Modern War Main Theme</div>
+                <div class="work-desc">2022 · Peabody Institute — Sound design, original score, and full audio implementation in Unity &amp; Wwise. Environmental audio, interactive logic, and asset pipeline.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/qXMeqoK3c_E" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="video-games">
+                <div class="work-title">RPG Game</div>
+                <div class="work-desc">Original score &amp; audio implementation.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/BHX8LHba2Hg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="video-games">
+                <div class="work-title">Blue Guy</div>
+                <div class="work-desc">Original score &amp; audio implementation.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/r4ipOQn11jE" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="video-games">
+                <div class="work-title">Cube</div>
+                <div class="work-desc">Original score &amp; audio implementation.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/Demw3l4-Jvs" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <!-- Documentaries -->
+            <div class="work-item" data-category="documentaries">
+                <div class="work-title">[Documentary title]</div>
+                <div class="work-desc">[Year] · [Director / Production] — [Your role]</div>
+                <div class="work-links">
+                    <a href="#">Watch →</a>
+                </div>
+            </div>
+
+            <!-- Sound Design -->
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">Picture Book Audio — 12 Titles</div>
+                <div class="work-desc">2024–2025 · Hangzhou Xihe Culture Technology — Background music &amp; sound effects for 12 children's picture books including <em>My Mom</em>, <em>The Runaway Bunny</em>, and <em>A Seed's Journey</em>. Published on the "美妈讲绘本" app; 100,000+ plays.</div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">玉兰记 (Yulan Chronicles)</div>
+                <div class="work-desc">2024 · Hangzhou Xuanye Digital Technology — Original score for 3 acts of the mini-series drama. Incorporated elements of traditional Nuo opera.</div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">2024 National Children's Picture Book Exhibition — Stage Music</div>
+                <div class="work-desc">2024 · Hangzhou Xihe Culture Technology — Opening music, award ceremony music, and guest performance music for the Zhejiang Provincial Competition of the 1st Brilliant Future National Children's Picture Book Story Exhibition.</div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">Sound Design — Basic Movements</div>
+                <div class="work-desc">Sound design for basic character movements.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/liZvOdCQkdI" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">Sound Design — Teaser</div>
+                <div class="work-desc">Sound design for a cinematic teaser.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/jqI6Z1zOJRo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">Gun Operation Sound Design</div>
+                <div class="work-desc">Sound design for gun mechanics and operations.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/F2X0GZp6A1Q" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">CG Sound Effect Design</div>
+                <div class="work-desc">Sound effects design for CG animation.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/B-44RYWaWr4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+            <div class="work-item" data-category="sound-design">
+                <div class="work-title">Marvel's Spider-Man 2: Sound Re-design — Sandman Scene</div>
+                <div class="work-desc">Sound re-design for the Sandman battle scene from Marvel's Spider-Man 2.</div>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/-DfKr-a1u3c" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="no-results" id="no-results">No works in this category yet.</p>
+
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.filter-tabs button');
+        const items = document.querySelectorAll('.work-item');
+        const noResults = document.getElementById('no-results');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+                let visible = 0;
+
+                items.forEach(item => {
+                    const match = filter === 'all' || item.dataset.category === filter;
+                    item.classList.toggle('hidden', !match);
+                    if (match) visible++;
+                });
+
+                noResults.classList.toggle('visible', visible === 0);
+            });
+        });
+    </script>
+
+</body>
+</html>

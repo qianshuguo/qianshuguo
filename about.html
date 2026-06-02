@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>About — Qianshu Guo</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='theme-color' content='#e8e4de'/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg: #e8e4de; --text: #2d2926; --muted: #7a7068; --border: #d0cbc4; }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .site-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+        }
+        .site-nav .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .site-nav .links {
+            display: flex;
+            gap: 32px;
+        }
+        .site-nav .links a {
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .04em;
+            transition: color 0.2s;
+        }
+        .site-nav .links a:hover { color: var(--text); }
+
+        .page-content {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            margin-bottom: 48px;
+            letter-spacing: .01em;
+        }
+
+        .page-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        @media (max-width: 600px) {
+            .site-nav { padding: 20px 24px; }
+            .page-content { padding: 40px 24px 80px; }
+            .site-nav .links { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a class="name" href="index.html">Qianshu Guo</a>
+        <div class="links">
+            <a href="about.html">About</a>
+            <a href="works.html">Works</a>
+            <a href="contact.html">Contact</a>
+            <a href="cv.html">CV</a>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="page-title">About</div>
+        <p>Qianshu Guo is a Chinese music composer based in New York City. He specializes in crafting orchestral and hybrid scores for visual media, blending classical textures with modern electronic and jazz influences.</p>
+        <p>His music is known for its rich harmonic language and emotional storytelling. Trained in both classical composition and jazz keyboard, Qianshu brings a versatile voice to each project, drawing from his experience in orchestration, sound production, and cross-genre experimentation. His works span film, games, and multimedia collaborations.</p>
+        <p>With roots in China and professional experience in the U.S., Qianshu's musical voice reflects a cross-cultural perspective. From sweeping orchestral scores to groove-driven electronic soundscapes, his compositions aim to deepen narrative impact and evoke lasting emotion.</p>
+        <p>In addition to scoring, he is passionate about pop music production and occasionally writes songs, bringing a melodic sensibility and emotional immediacy into his media work.</p>
+    </div>
+
+</body>
+</html>
