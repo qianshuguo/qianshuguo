@@ -46,7 +46,7 @@
         .site-nav .links a:hover { color: var(--text); }
 
         .page-content {
-            max-width: 640px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 60px 40px 100px;
         }
@@ -62,11 +62,15 @@
         /* ── Filter tabs ── */
         .filter-tabs {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 0;
             margin-bottom: 48px;
             border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+        .filter-tabs::-webkit-scrollbar { display: none; }
         .filter-tabs button {
             background: none;
             border: none;
@@ -79,6 +83,8 @@
             text-transform: uppercase;
             color: var(--muted);
             cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: color 0.2s, border-color 0.2s;
         }
         .filter-tabs button:first-child { padding-left: 0; }
