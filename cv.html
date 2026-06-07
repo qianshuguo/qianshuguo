@@ -57,19 +57,23 @@
             transition: color 0.2s;
         }
         .site-nav .links a:hover { color: var(--text); }
-        .site-nav .download-btn {
+        .cv-download {
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            font-size: 13px !important;
-            color: var(--text) !important;
+            font-family: 'EB Garamond', serif;
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
             border: 1px solid var(--border);
             padding: 5px 14px;
             border-radius: 2px;
-            transition: border-color 0.2s;
+            letter-spacing: .04em;
+            transition: color 0.2s, border-color 0.2s;
+            margin-top: 16px;
         }
-        .site-nav .download-btn:hover { border-color: var(--text) !important; }
-        .site-nav .download-btn svg { fill: var(--text); }
+        .cv-download:hover { color: var(--text); border-color: var(--text); }
+        .cv-download svg { fill: currentColor; }
 
         .cv-page {
             max-width: 720px;
@@ -262,13 +266,10 @@
     <nav class="site-nav">
         <a class="name" href="index.html">Qianshu Guo</a>
         <div class="links">
-            <a href="index.html">Home</a>
-            <a class="download-btn" href="assets/CV.pdf" download="CV_QianshuGuo.pdf">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/>
-                </svg>
-                PDF
-            </a>
+            <a href="about.html">About</a>
+            <a href="works.html">Works</a>
+            <a href="contact.html">Contact</a>
+            <a href="cv.html">CV</a>
         </div>
     </nav>
 
@@ -280,6 +281,12 @@
                 <a href="mailto:qianhu.guo@outlook.com">qianhu.guo@outlook.com</a><br>
                 New York City, USA
             </div>
+            <a class="cv-download" href="assets/CV.pdf" download="CV_QianshuGuo.pdf">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/>
+                </svg>
+                Download PDF
+            </a>
         </div>
 
         <!-- Education -->
