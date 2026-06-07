@@ -198,16 +198,16 @@
             width: 36px;
             height: 36px;
             border-radius: 0;
-            border: 1.5px solid var(--text);
+            border: 1.5px solid var(--border);
             background: none;
             cursor: pointer;
-            color: var(--text);
-            transition: background 0.2s, color 0.2s;
+            color: var(--muted);
+            transition: border-color 0.25s, color 0.25s;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .sc-play-btn:hover { background: var(--text); color: var(--bg); }
+        .sc-play-btn:hover { border-color: var(--text); color: var(--text); }
         .sc-play-btn::before {
             content: '';
             display: block;
@@ -286,7 +286,7 @@
             <div class="work-item" data-category="compositions">
                 <div class="work-text">
                     <div class="work-title">Glimmers</div>
-                    <div class="work-desc">2024 · Orchestra — Written for and performed by the Peabody Symphony Orchestra.</div>
+                    <div class="work-desc">Orchestral work written for and performed by the Peabody Symphony Orchestra.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/8hSRID5KJuM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -296,7 +296,7 @@
             <div class="work-item" data-category="compositions">
                 <div class="work-text">
                     <div class="work-title">String Quartet in F major</div>
-                    <div class="work-desc">2024 · String Quartet — Written for the New York ETHEL String Quartet; premiered at a Peabody Institute concert.</div>
+                    <div class="work-desc">Written for the New York ETHEL String Quartet; premiered at a Peabody Institute concert.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/laXtgvb-2Wo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -307,7 +307,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Incongruity of Meaning</div>
-                    <div class="work-desc">Short film — Original score.</div>
+                    <div class="work-desc">Original Score for the short film Incongruity of Meaning, featuring spoken narration and original poetry.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/cgOOuv4xpU0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -317,7 +317,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Confronting the Masked Re-score</div>
-                    <div class="work-desc">Big Hero 6 · Rescore — Original score for the climactic confrontation scene.</div>
+                    <div class="work-desc">Full orchestral re-score for the climactic confrontation between Hero Squad and Yokai from Disney's Big Hero 6.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/ZoArfFYbaAw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -327,7 +327,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Ghost of Tsushima Original Score</div>
-                    <div class="work-desc">LCSP 2023 · Original score — Written for the Ghost of Tsushima scene as part of a live cinema scoring program.</div>
+                    <div class="work-desc">Original orchestral score written for the LeiCine Scoring Project 2023 competition.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/OJHBugGO3E0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -337,7 +337,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Trail of Light Original Score</div>
-                    <div class="work-desc">BIFSC 2024 · Original score — Written for the short film Trail of Light for a film scoring competition.</div>
+                    <div class="work-desc">Hybrid orchestral and electronic score written for the BIFSC 2024 film scoring competition, blending orchestral and synth textures with sacred choral colors and sci-fi elements.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/NpdmTZiARDo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -347,7 +347,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Final Frontier Original Score</div>
-                    <div class="work-desc">Short film · Original score — Original score written for the short film Final Frontier.</div>
+                    <div class="work-desc">Original score written for the sci-fi short film Final Frontier, exploring the isolation and mystery of deep space.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/EoEZzY0Yhd4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -357,7 +357,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Hank Car Accident Re-score</div>
-                    <div class="work-desc">Breaking Bad · Rescore — Original score for the Hank car accident scene.</div>
+                    <div class="work-desc">Re-score for the Hank car accident scene from Breaking Bad, featuring tense atonal textures and mounting pressure.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/iOK1s85lQlg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -367,8 +367,8 @@
             <!-- Trailers -->
             <div class="work-item" data-category="trailers">
                 <div class="work-text">
-                    <div class="work-title">1917 Trailer Rescore</div>
-                    <div class="work-desc">Original score — Trailer rescore.</div>
+                    <div class="work-title">1917 Trailer Re-score</div>
+                    <div class="work-desc">Trailer re-score for 1917, Sam Mendes’s World War I film, with original sound design and an intense battlefield atmosphere.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/ze5mjvVK5Hk" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -378,7 +378,7 @@
             <div class="work-item" data-category="trailers">
                 <div class="work-text">
                     <div class="work-title">Black Maritime</div>
-                    <div class="work-desc">Living Classroom · Trailer — Original score for the Black Maritime trailer produced for Living Classroom.</div>
+                    <div class="work-desc">Original score for the Black Maritime trailer produced for Living Classroom, featuring modern trailer-style percussion and pop-inspired instrumentation.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/x0zJeYHbsDw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -387,8 +387,8 @@
 
             <div class="work-item" data-category="trailers">
                 <div class="work-text">
-                    <div class="work-title">Star Wars IX Teaser Rescore</div>
-                    <div class="work-desc">Original score — Teaser rescore.</div>
+                    <div class="work-title">Star Wars IX Teaser Re-score</div>
+                    <div class="work-desc">Orchestral teaser re-score for Star Wars IX.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/0Z_k9OMxUAM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -398,8 +398,8 @@
             <!-- Video Games -->
             <div class="work-item" data-category="video-games">
                 <div class="work-text">
-                    <div class="work-title">Modern War Main Theme</div>
-                    <div class="work-desc">2022 · Peabody Institute — Sound design, original score, and full audio implementation in Unity &amp; Wwise. Environmental audio, interactive logic, and asset pipeline.</div>
+                    <div class="work-title">Modern Warfare Main Theme</div>
+                    <div class="work-desc">Hybrid orchestral and electronic main theme for a first-person shooter game, featuring live-recorded cello.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/qXMeqoK3c_E" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -409,7 +409,7 @@
             <div class="work-item" data-category="video-games">
                 <div class="work-text">
                     <div class="work-title">RPG Game</div>
-                    <div class="work-desc">Original score &amp; audio implementation.</div>
+                    <div class="work-desc">Original music and full audio implementation in Unity, featuring adaptive day and night music systems.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/BHX8LHba2Hg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -419,7 +419,7 @@
             <div class="work-item" data-category="video-games">
                 <div class="work-text">
                     <div class="work-title">Blue Guy</div>
-                    <div class="work-desc">Original score &amp; audio implementation.</div>
+                    <div class="work-desc">Sound design, original music, and full audio implementation in Unity, including gameplay SFX and interactive stingers.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/r4ipOQn11jE" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -429,7 +429,7 @@
             <div class="work-item" data-category="video-games">
                 <div class="work-text">
                     <div class="work-title">Cube</div>
-                    <div class="work-desc">Original score &amp; audio implementation.</div>
+                    <div class="work-desc">Original music and full audio implementation in Wwise, featuring different looping systems for combat, boss, and exploration gameplay, and gameplay stingers.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/Demw3l4-Jvs" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -440,7 +440,7 @@
             <div class="work-item" data-category="sound-design">
                 <div class="work-text">
                     <div class="work-title">Sound Design — Basic Movements</div>
-                    <div class="work-desc">Sound design for basic character movements.</div>
+                    <div class="work-desc">Sound design focused on basic character movement interactions.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/liZvOdCQkdI" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -450,7 +450,7 @@
             <div class="work-item" data-category="sound-design">
                 <div class="work-text">
                     <div class="work-title">Sound Design — Teaser</div>
-                    <div class="work-desc">Sound design for a cinematic teaser.</div>
+                    <div class="work-desc">Sound design for three short-form cinematic teasers, including a Marvel-themed mobile game character selection sequence and two superhero-inspired shorts.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/jqI6Z1zOJRo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -460,7 +460,7 @@
             <div class="work-item" data-category="sound-design">
                 <div class="work-text">
                     <div class="work-title">Gun Operation Sound Design</div>
-                    <div class="work-desc">Sound design for gun mechanics and operations.</div>
+                    <div class="work-desc">Sound design centered on weapon mechanics and operational detail.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/F2X0GZp6A1Q" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -469,8 +469,8 @@
 
             <div class="work-item" data-category="sound-design">
                 <div class="work-text">
-                    <div class="work-title">CG Sound Effect Design</div>
-                    <div class="work-desc">Sound effects design for CG animation.</div>
+                    <div class="work-title">Naraka: Bladepoint Sound &amp; Music Design</div>
+                    <div class="work-desc">Original music and sound design for a cinematic CG trailer re-score of Naraka: Bladepoint.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/B-44RYWaWr4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -479,8 +479,8 @@
 
             <div class="work-item" data-category="sound-design">
                 <div class="work-text">
-                    <div class="work-title">Marvel's Spider-Man 2: Sound Re-design — Sandman Scene</div>
-                    <div class="work-desc">Sound re-design for the Sandman battle scene from Marvel's Spider-Man 2.</div>
+                    <div class="work-title">Marvel's Spider-Man 2: Sound Redesign — Sandman Scene</div>
+                    <div class="work-desc">Sound redesign for the Sandman battle sequence from Marvel's Spider-Man 2.</div>
                 </div>
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/-DfKr-a1u3c" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -491,7 +491,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">Fanfare (Hollywood Style)</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">A bright and celebratory Hollywood-style fanfare inspired by classic studio logo themes and golden-age cinematic orchestration.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
@@ -504,7 +504,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">City by the Sea</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">Percussion-driven orchestral sketch inspired by the energy and density of urban life.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
@@ -517,7 +517,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">Soft and Minimal</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">Minimal piano piece featuring free rhythm and subtle Chinese-inspired colors.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
@@ -530,7 +530,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">Desplat Minimalism</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">Minimalist string sketch inspired by the compositional style of Alexandre Desplat.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
@@ -543,7 +543,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">Modern Warfare Main Theme</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">Hybrid orchestral and electronic main theme for a first-person shooter game, featuring live-recorded cello.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
@@ -556,7 +556,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">Destiny's Path</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">Short cinematic piece inspired by Memoirs of a Geisha, blending Japanese influences with dark and restrained textures.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
@@ -569,7 +569,7 @@
             <div class="work-item" data-category="soundtracks">
                 <div class="work-text">
                     <div class="work-title">Taxi Driver</div>
-                    <div class="work-desc">Description placeholder.</div>
+                    <div class="work-desc">Short noir-inspired piece influenced by Bernard Herrmann's haunting jazz-infused film scores.</div>
                 </div>
                 <div class="sc-player">
                     <button class="sc-play-btn" aria-label="Play / Pause"></button>
