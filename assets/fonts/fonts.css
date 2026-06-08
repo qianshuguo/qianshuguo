@@ -8,23 +8,9 @@
 }
 @font-face {
     font-family: 'Playfair Display';
-    src: url('PlayfairDisplay-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-    font-display: block;
-}
-@font-face {
-    font-family: 'Playfair Display';
     src: url('PlayfairDisplay-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
-    font-display: block;
-}
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('PlayfairDisplay-MediumItalic.ttf') format('truetype');
-    font-weight: 500;
-    font-style: italic;
     font-display: block;
 }
 
@@ -43,29 +29,8 @@
     font-style: italic;
     font-display: block;
 }
-@font-face {
-    font-family: 'EB Garamond';
-    src: url('EBGaramond-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: block;
-}
-@font-face {
-    font-family: 'EB Garamond';
-    src: url('EBGaramond-MediumItalic.ttf') format('truetype');
-    font-weight: 500;
-    font-style: italic;
-    font-display: block;
-}
 
 /* Cormorant Garamond — italic accents */
-@font-face {
-    font-family: 'Cormorant Garamond';
-    src: url('CormorantGaramond-Italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: block;
-}
 @font-face {
     font-family: 'Cormorant Garamond';
     src: url('CormorantGaramond-MediumItalic.woff2') format('woff2');
