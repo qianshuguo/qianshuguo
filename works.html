@@ -5,8 +5,8 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='theme-color' content='#e8e4de'/>
-    <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="assets/fonts/EBGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/CormorantGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
     <link href="assets/fonts/fonts.css" rel="stylesheet">
     <style>
@@ -29,7 +29,7 @@
         }
         .site-nav .name {
             font-family: 'Playfair Display', serif;
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 500;
             letter-spacing: .04em;
             text-decoration: none;
@@ -40,8 +40,8 @@
             gap: 32px;
         }
         .site-nav .links a {
-            font-size: 14px;
-            color: var(--muted);
+            font-size: 16px;
+            color: #5a544e;
             text-decoration: none;
             letter-spacing: .04em;
             transition: color 0.2s;
@@ -51,7 +51,7 @@
         .page-content {
             max-width: 960px;
             margin: 0 auto;
-            padding: 60px 40px 100px;
+            padding: 30px 40px 100px;
         }
 
         .page-title {
@@ -183,12 +183,43 @@
             overflow: hidden;
             background: #1a1816;
             margin: 12px 0 0;
+            cursor: pointer;
         }
         .video-embed iframe {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             border: none;
+        }
+        .video-embed img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .yt-play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px; height: 40px;
+            background: rgba(0,0,0,0.72);
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.18s;
+            pointer-events: none;
+        }
+        .video-embed:hover .yt-play { background: #ff0000; }
+        .yt-play::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%; left: 55%;
+            transform: translate(-50%, -50%);
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent #fff;
         }
 
         /* ── SoundCloud player ── */
@@ -258,10 +289,10 @@
     <nav class="site-nav">
         <a class="name" href="index.html">Qianshu Guo</a>
         <div class="links">
-            <a href="about.html">About</a>
             <a href="works.html">Works</a>
-            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
             <a href="cv.html">CV</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
@@ -272,7 +303,7 @@
         <div class="showreel-section">
             <div class="showreel-label">Showreel</div>
             <div class="video-embed">
-                <iframe src="https://www.youtube.com/embed/WJOovnEl3wg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <iframe data-src="https://www.youtube.com/embed/WJOovnEl3wg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             </div>
         </div>
 
@@ -294,7 +325,7 @@
                     <div class="work-desc">Orchestral work written for and performed by the Peabody Symphony Orchestra.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/8hSRID5KJuM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/8hSRID5KJuM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -304,7 +335,7 @@
                     <div class="work-desc">Written for the New York ETHEL String Quartet; premiered at a Peabody Institute concert.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/laXtgvb-2Wo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/laXtgvb-2Wo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -315,7 +346,7 @@
                     <div class="work-desc">Original Score for the short film Incongruity of Meaning, featuring spoken narration and original poetry.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/cgOOuv4xpU0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/cgOOuv4xpU0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -325,7 +356,7 @@
                     <div class="work-desc">Full orchestral re-score for the climactic confrontation between Hero Squad and Yokai from Disney's Big Hero 6.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/ZoArfFYbaAw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/ZoArfFYbaAw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -335,7 +366,7 @@
                     <div class="work-desc">Original orchestral score written for the LeiCine Scoring Project 2023 competition.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/OJHBugGO3E0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/OJHBugGO3E0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -345,7 +376,7 @@
                     <div class="work-desc">Hybrid orchestral and electronic score written for the BIFSC 2024 film scoring competition, blending orchestral and synth textures with sacred choral colors and sci-fi elements.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/NpdmTZiARDo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/NpdmTZiARDo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -355,7 +386,7 @@
                     <div class="work-desc">Original score written for the sci-fi short film Final Frontier, exploring the isolation and mystery of deep space.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/EoEZzY0Yhd4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/EoEZzY0Yhd4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -365,7 +396,7 @@
                     <div class="work-desc">Re-score for the Hank car accident scene from Breaking Bad, featuring tense atonal textures and mounting pressure.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/iOK1s85lQlg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/iOK1s85lQlg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -376,7 +407,7 @@
                     <div class="work-desc">Trailer re-score for 1917, Sam Mendes’s World War I film, with original sound design and an intense battlefield atmosphere.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/ze5mjvVK5Hk" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/ze5mjvVK5Hk" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -386,7 +417,7 @@
                     <div class="work-desc">Original score for the Black Maritime trailer produced for Living Classroom, featuring modern trailer-style percussion and pop-inspired instrumentation.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/x0zJeYHbsDw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/x0zJeYHbsDw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -396,7 +427,7 @@
                     <div class="work-desc">Orchestral teaser re-score for Star Wars IX.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/0Z_k9OMxUAM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/0Z_k9OMxUAM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -407,7 +438,7 @@
                     <div class="work-desc">Hybrid orchestral and electronic main theme for a first-person shooter game, featuring live-recorded cello.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/qXMeqoK3c_E" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/qXMeqoK3c_E" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -417,7 +448,7 @@
                     <div class="work-desc">Original music and full audio implementation in Unity, featuring adaptive day and night music systems.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/BHX8LHba2Hg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/BHX8LHba2Hg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -427,7 +458,7 @@
                     <div class="work-desc">Sound design, original music, and full audio implementation in Unity, including gameplay SFX and interactive stingers.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/r4ipOQn11jE" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/r4ipOQn11jE" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -437,7 +468,7 @@
                     <div class="work-desc">Original music and full audio implementation in Wwise, featuring different looping systems for combat, boss, and exploration gameplay, and gameplay stingers.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/Demw3l4-Jvs" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/Demw3l4-Jvs" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -448,7 +479,7 @@
                     <div class="work-desc">Sound design focused on basic character movement interactions.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/liZvOdCQkdI" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/liZvOdCQkdI" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -458,7 +489,7 @@
                     <div class="work-desc">Sound design for three short-form cinematic teasers, including a Marvel-themed mobile game character selection sequence and two superhero-inspired shorts.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/jqI6Z1zOJRo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/jqI6Z1zOJRo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -468,17 +499,17 @@
                     <div class="work-desc">Sound design centered on weapon mechanics and operational detail.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/F2X0GZp6A1Q" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/F2X0GZp6A1Q" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
             <div class="work-item" data-category="sound-design">
                 <div class="work-text">
-                    <div class="work-title">Naraka: Bladepoint Sound <span class="amp">&amp;</span> Music Design</div>
+                    <div class="work-title">Naraka: Bladepoint Sound &amp; Music Design</div>
                     <div class="work-desc">Original music and sound design for a cinematic CG trailer re-score of Naraka: Bladepoint.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/B-44RYWaWr4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/B-44RYWaWr4" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -488,7 +519,7 @@
                     <div class="work-desc">Sound redesign for the Sandman battle sequence from Marvel's Spider-Man 2.</div>
                 </div>
                 <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/-DfKr-a1u3c" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe data-src="https://www.youtube.com/embed/-DfKr-a1u3c" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
 
@@ -603,10 +634,35 @@
         const items = document.querySelectorAll('.work-item');
         const noResults = document.getElementById('no-results');
 
+        /* ── YouTube facade ── */
+        function setupYouTubeFacades() {
+            document.querySelectorAll('.video-embed').forEach(function(embed) {
+                var iframe = embed.querySelector('iframe[data-src]');
+                if (!iframe) return;
+                var src = iframe.dataset.src;
+                var match = src.match(/embed\/([^?&]+)/);
+                if (!match) return;
+                var id = match[1];
+                var autoSrc = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
+                embed.dataset.ytSrc = autoSrc;
+                embed.innerHTML = '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy"><button class="yt-play" aria-label="Play video"></button>';
+                embed.addEventListener('click', function() {
+                    var f = document.createElement('iframe');
+                    f.src = embed.dataset.ytSrc;
+                    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    f.allowFullscreen = true;
+                    embed.innerHTML = '';
+                    embed.appendChild(f);
+                }, { once: true });
+            });
+        }
+        setupYouTubeFacades();
+
+        /* ── Filter ── */
         function applyFilter(filter) {
-            let visible = 0;
-            items.forEach(item => {
-                const match = item.dataset.category === filter;
+            var visible = 0;
+            items.forEach(function(item) {
+                var match = item.dataset.category === filter;
                 item.classList.toggle('hidden', !match);
                 if (match) visible++;
             });
@@ -615,11 +671,10 @@
 
         applyFilter('movies');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                tabs.forEach(function(t) { t.classList.remove('active'); });
                 tab.classList.add('active');
-
                 applyFilter(tab.dataset.filter);
             });
         });
@@ -631,13 +686,9 @@
             document.querySelectorAll('.sc-play-btn').forEach(function(btn) {
                 const iframe = btn.closest('.sc-player').querySelector('iframe');
                 const widget = SC.Widget(iframe);
-
                 btn.addEventListener('click', function() {
-                    widget.isPaused(function(paused) {
-                        paused ? widget.play() : widget.pause();
-                    });
+                    widget.isPaused(function(paused) { paused ? widget.play() : widget.pause(); });
                 });
-
                 widget.bind(SC.Widget.Events.PLAY, function() { btn.classList.add('playing'); });
                 widget.bind(SC.Widget.Events.PAUSE, function() { btn.classList.remove('playing'); });
                 widget.bind(SC.Widget.Events.FINISH, function() { btn.classList.remove('playing'); });

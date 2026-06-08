@@ -1,14 +1,14 @@
 /* Playfair Display — headings */
 @font-face {
     font-family: 'Playfair Display';
-    src: url('PlayfairDisplay-Regular.ttf') format('truetype');
+    src: url('PlayfairDisplay-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'Playfair Display';
-    src: url('PlayfairDisplay-Medium.ttf') format('truetype');
+    src: url('PlayfairDisplay-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: block;
@@ -17,14 +17,14 @@
 /* EB Garamond — body */
 @font-face {
     font-family: 'EB Garamond';
-    src: url('EBGaramond-Regular.ttf') format('truetype');
+    src: url('EBGaramond-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'EB Garamond';
-    src: url('EBGaramond-Italic.ttf') format('truetype');
+    src: url('EBGaramond-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: block;
