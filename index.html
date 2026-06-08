@@ -5,7 +5,10 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='theme-color' content='#e8e4de'/>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/EBGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/CormorantGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --bg: #e8e4de; --text: #2d2926; --muted: #7a7068; }
@@ -37,8 +40,10 @@
         }
 
         .hero .subtitle {
-            font-size: 18px;
+            font-size: 24px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
             margin-bottom: 60px;
         }
@@ -69,7 +74,7 @@
 <body>
     <div class="hero">
         <h1>Qianshu Guo</h1>
-        <p class="subtitle">Composer &amp; Sound Designer</p>
+        <p class="subtitle">Composer <span class="amp">&amp;</span> Sound Designer</p>
         <div class="hero-links">
             <a href="about.html">About</a>
             <a href="works.html">Works</a>
