@@ -4,7 +4,10 @@
     <title>CV — Qianshu Guo</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/EBGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/CormorantGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -45,7 +48,7 @@
             align-items: center;
         }
         .site-nav .links a {
-            font-family: 'EB Garamond', serif;
+            font-family: 'EB Garamond', Georgia, serif;
             font-size: 14px;
             color: var(--muted);
             text-decoration: none;
@@ -57,7 +60,7 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            font-family: 'EB Garamond', serif;
+            font-family: 'EB Garamond', Georgia, serif;
             font-size: 13px;
             color: var(--muted);
             text-decoration: none;
@@ -66,13 +69,13 @@
             border-radius: 2px;
             letter-spacing: .04em;
             transition: color 0.2s, border-color 0.2s;
-            margin-top: 16px;
+            margin-top: 30px;
         }
         .cv-download:hover { color: var(--text); border-color: var(--text); }
         .cv-download svg { fill: currentColor; }
 
         .cv-page {
-            max-width: 720px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 60px 40px 100px;
         }
@@ -89,10 +92,12 @@
             margin-bottom: 16px;
         }
         .cv-header .contact {
-            font-size: 14px;
+            font-size: 18px;
             color: var(--muted);
             font-style: italic;
-            line-height: 2;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            line-height: 1.8;
         }
         .cv-header .contact a {
             color: var(--muted);
@@ -106,51 +111,55 @@
         .cv-block {
             background-color: var(--block-bg);
             border-radius: 4px;
-            padding: 36px 40px;
-            margin-bottom: 16px;
+            padding: 40px 44px;
+            margin-bottom: 18px;
         }
         .cv-block .block-label {
-            font-family: 'EB Garamond', serif;
-            font-size: 11px;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 16px;
             letter-spacing: .14em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 28px;
+            margin-bottom: 31px;
         }
 
         /* Education */
-        .edu-entry { margin-bottom: 28px; }
+        .edu-entry { margin-bottom: 31px; }
         .edu-entry:last-child { margin-bottom: 0; }
         .edu-school-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 7px;
             margin-bottom: 4px;
         }
         .edu-school {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 500;
         }
         .edu-location {
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
         }
         .edu-degree {
-            font-size: 16px;
+            font-size: 18px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             margin-bottom: 4px;
         }
         .edu-dates {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--muted);
-            margin-bottom: 6px;
+            margin-bottom: 7px;
         }
         .edu-note {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--muted);
         }
 
@@ -161,29 +170,29 @@
         }
         .skills-list li {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             flex-wrap: wrap;
             align-items: baseline;
-            padding: 10px 0;
+            padding: 11px 0;
             border-bottom: 1px solid var(--border);
-            font-size: 16px;
+            font-size: 18px;
         }
         .skills-list li:first-child { padding-top: 0; }
         .skills-list li:last-child { border-bottom: none; padding-bottom: 0; }
         .skill-key {
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
-            min-width: 200px;
+            min-width: 220px;
         }
         .skill-val {
             color: var(--muted);
-            font-size: 15px;
+            font-size: 17px;
         }
 
         /* Experience */
         .exp-entry {
-            padding: 20px 0;
+            padding: 22px 0;
             border-bottom: 1px solid var(--border);
         }
         .exp-entry:first-child { padding-top: 0; }
@@ -193,29 +202,34 @@
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 7px;
             margin-bottom: 2px;
         }
         .exp-title {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 400;
         }
         .exp-date {
-            font-size: 13px;
+            font-size: 18;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
             white-space: nowrap;
         }
         .exp-role {
-            font-size: 14px;
+            font-size: 18px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
-            margin-bottom: 8px;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
-        .exp-entry ul { padding-left: 18px; }
+        .exp-entry ul { padding-left: 20px; }
         .exp-entry ul li {
-            font-size: 15px;
+            font-size: 17px;
             line-height: 1.65;
             margin-bottom: 2px;
             color: var(--text);
@@ -231,20 +245,22 @@
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            gap: 8px;
-            padding: 12px 0;
+            gap: 9px;
+            padding: 13px 0;
             border-bottom: 1px solid var(--border);
         }
         .awards-list li:first-child { padding-top: 0; }
         .awards-list li:last-child { border-bottom: none; padding-bottom: 0; }
         .award-name {
             font-family: 'Playfair Display', serif;
-            font-size: 17px;
+            font-size: 19px;
             font-weight: 400;
         }
         .award-prize {
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
             white-space: nowrap;
         }
@@ -274,7 +290,7 @@
         <div class="cv-header">
             <h1>Qianshu Guo</h1>
             <div class="contact">
-                <a href="mailto:qianhu.guo@outlook.com">qianhu.guo@outlook.com</a><br>
+                <a href="mailto:qianshu.guo@outlook.com">qianshu.guo@outlook.com</a><br>
                 New York City, USA
             </div>
             <a class="cv-download" href="assets/cv/Resume QG.pdf" download="Resume QG.pdf">
@@ -285,6 +301,7 @@
             </a>
         </div>
 
+        <div class="cv-content">
         <!-- Education -->
         <div class="cv-block">
             <div class="block-label">Education</div>
@@ -296,7 +313,7 @@
                 </div>
                 <div class="edu-degree">Master of Music Technology</div>
                 <div class="edu-dates">September 2025 – May 2027</div>
-                <div class="edu-note">Top 5% in major · Courses: MIR, Machine Learning (TensorFlow, PyTorch), Game Audio (Wwise, Unity, Unreal Engine), Spatial &amp; Immersive Audio</div>
+                <div class="edu-note">Top 5% in major · Courses: MIR, Machine Learning (TensorFlow, PyTorch), Game Audio (Wwise, Unity, Unreal Engine), Spatial <span class="amp">&amp;</span> Immersive Audio</div>
             </div>
 
             <div class="edu-entry">
@@ -306,7 +323,7 @@
                 </div>
                 <div class="edu-degree">Bachelor of Music in New Media Music</div>
                 <div class="edu-dates">September 2021 – May 2025</div>
-                <div class="edu-note">Ranked 1st in major · GPA: 3.93 / 4.00 · Courses: Film &amp; Game Scoring, Sound Design, Recording, Jazz Piano, Conducting</div>
+                <div class="edu-note">Ranked 1st in major · GPA: 3.93 / 4.00 · Courses: Film <span class="amp">&amp;</span> Game Scoring, Sound Design, Recording, Jazz Piano, Conducting</div>
             </div>
         </div>
 
@@ -319,7 +336,7 @@
                     <span class="skill-val">Chinese (native), English (fluent), Korean (conversational)</span>
                 </li>
                 <li>
-                    <span class="skill-key">DAWs &amp; Notation</span>
+                    <span class="skill-key">DAWs <span class="amp">&amp;</span> Notation</span>
                     <span class="skill-val">Logic Pro, Cubase, Ableton Live, Pro Tools, Sibelius</span>
                 </li>
                 <li>
@@ -362,7 +379,7 @@
                     <span class="exp-title">Peabody Institute, Johns Hopkins University</span>
                     <span class="exp-date">Aug 2022 – Jun 2023</span>
                 </div>
-                <div class="exp-role">Recording Assistant &amp; Engineer</div>
+                <div class="exp-role">Recording Assistant <span class="amp">&amp;</span> Engineer</div>
                 <ul>
                     <li>Assisted professional recording sessions for opera, jazz ensemble, concerto, and choral works (including <em>Cendrillon Act 2</em>) in Peabody's studio facility.</li>
                     <li>Operated Neve console; handled mic placement, signal routing, and monitor management.</li>
@@ -386,10 +403,10 @@
 
         <!-- Awards -->
         <div class="cv-block">
-            <div class="block-label">Awards &amp; Recognition</div>
+            <div class="block-label">Awards <span class="amp">&amp;</span> Recognition</div>
             <ul class="awards-list">
                 <li>
-                    <span class="award-name">John &amp; Aileen Harness Memorial Scholarship — Peabody Institute</span>
+                    <span class="award-name">John <span class="amp">&amp;</span> Aileen Harness Memorial Scholarship — Peabody Institute</span>
                     <span class="award-prize">May 2023</span>
                 </li>
                 <li>
@@ -403,6 +420,7 @@
             </ul>
         </div>
 
+        </div><!-- /cv-content -->
     </div>
 
 </body>

@@ -5,7 +5,10 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='theme-color' content='#e8e4de'/>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/EBGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/CormorantGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --bg: #e8e4de; --text: #2d2926; --muted: #7a7068; --border: #d0cbc4; }
@@ -46,7 +49,7 @@
         .site-nav .links a:hover { color: var(--text); }
 
         .page-content {
-            max-width: 560px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 60px 40px 100px;
         }
@@ -60,8 +63,10 @@
         }
 
         .contact-intro {
-            font-size: 17px;
+            font-size: 18px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
             margin-bottom: 48px;
         }
@@ -91,7 +96,7 @@
             border: none;
             border-bottom: 1px solid var(--border);
             padding: 8px 0;
-            font-family: 'EB Garamond', serif;
+            font-family: 'EB Garamond', Georgia, serif;
             font-size: 17px;
             color: var(--text);
             outline: none;
@@ -131,6 +136,8 @@
             display: none;
             font-size: 16px;
             font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
             margin-top: 8px;
         }
