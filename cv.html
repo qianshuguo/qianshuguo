@@ -185,12 +185,24 @@
         }
         .exp-role {
             font-size: 18px;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
+            font-style: normal;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-weight: 400;
             color: var(--muted);
             margin-top: 5px;
             margin-bottom: 5px;
+        }
+        .exp-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 7px 18px;
+            margin-bottom: 7px;
+        }
+        .exp-meta-row .exp-role,
+        .exp-meta-row .exp-organization {
+            margin-bottom: 0;
         }
         .exp-entry ul { padding-left: 20px; }
         .exp-entry ul li {
@@ -201,6 +213,9 @@
         }
         .exp-organization {
             font-size: 16px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
             color: var(--muted);
             margin-bottom: 7px;
         }
@@ -290,8 +305,10 @@
                     <span class="exp-title">Master of Music in Music Technology</span>
                     <span class="exp-date">September 2025 – May 2027</span>
                 </div>
-                <div class="exp-role">New York University, Steinhardt</div>
-                <div class="exp-organization">New York, NY</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">New York University, Steinhardt</div>
+                    <div class="exp-organization">New York, NY</div>
+                </div>
                 <ul>
                     <li>GPA: 3.82 / 4.00</li>
                     <li>Relevant Coursework: Programming in Python, C++, and Java; Data Structures; Music Information Retrieval; Machine Learning; Game Audio; Mixing and Mastering; Immersive Audio</li>
@@ -303,8 +320,10 @@
                     <span class="exp-title">Bachelor of Music in Music for New Media</span>
                     <span class="exp-date">September 2021 – May 2025</span>
                 </div>
-                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
-                <div class="exp-organization">Baltimore, MD</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                    <div class="exp-organization">Baltimore, MD</div>
+                </div>
                 <ul>
                     <li>GPA: 3.93 / 4.00</li>
                     <li>Focus: Film and Game Scoring, Music Production, Sound Design, Jazz Piano, Recording Arts, Conducting</li>
@@ -321,8 +340,10 @@
                     <span class="exp-title">Music Production Intern</span>
                     <span class="exp-date">May 2026 – Present</span>
                 </div>
-                <div class="exp-role">Hunan Satellite TV (Mango TV), <em>Singer 2026</em> Music Team</div>
-                <div class="exp-organization">Changsha, China</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Hunan Satellite TV (Mango TV), <em>Singer 2026</em> Music Team</div>
+                    <div class="exp-organization">Changsha, China</div>
+                </div>
                 <ul>
                     <li>Coordinated lyrics, copyright records, musician schedules, and music requirements across the live band, directing, and technical teams during rehearsals and live broadcasts.</li>
                     <li>Supported rehearsals for visiting musicians and performance transitions, coordinating schedules, reception, and on-site communication.</li>
@@ -335,8 +356,10 @@
                     <span class="exp-title">Composer &amp; Sound Designer</span>
                     <span class="exp-date">September 2024 – January 2025</span>
                 </div>
-                <div class="exp-role">Hangzhou Xihe Culture &amp; Technology Co., Ltd</div>
-                <div class="exp-organization">Hangzhou, China</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Hangzhou Xihe Culture &amp; Technology Co., Ltd</div>
+                    <div class="exp-organization">Hangzhou, China</div>
+                </div>
                 <ul>
                     <li>Composed original music and sound effects for 12 children's picture books, including <em>My Mom</em>, <em>The Runaway Bunny</em>, and <em>A Seed's Journey</em>, generating more than 100,000 plays and leading to additional commissions.</li>
                     <li>Created opening, award-ceremony, and performance music for the Zhejiang stage of the 2024 Brilliant Future children's storytelling competition.</li>
@@ -348,8 +371,10 @@
                     <span class="exp-title">AI Research Intern</span>
                     <span class="exp-date">June 2024 – August 2024</span>
                 </div>
-                <div class="exp-role">Hangzhou Xuanye Digital Technology Co., Ltd</div>
-                <div class="exp-organization">Hangzhou, China</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Hangzhou Xuanye Digital Technology Co., Ltd</div>
+                    <div class="exp-organization">Hangzhou, China</div>
+                </div>
                 <ul>
                     <li>Benchmarked major AI music products across publicly documented model approaches, generation capabilities, pricing, licensing, and target use cases; delivered a comparative report supporting product planning.</li>
                     <li>Recorded audio for the mini-program drama <em>The Magnolia Chronicles</em> and assisted with session materials.</li>
@@ -362,8 +387,10 @@
                     <span class="exp-title">Recording Assistant &amp; Engineer</span>
                     <span class="exp-date">August 2022 – June 2023</span>
                 </div>
-                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
-                <div class="exp-organization">Baltimore, MD</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                    <div class="exp-organization">Baltimore, MD</div>
+                </div>
                 <ul>
                     <li>Recorded opera, jazz, concerto, and choral performances—including <em>Cendrillon</em>—using Neve consoles; supported microphone placement, signal routing, session monitoring, and documentation.</li>
                     <li>Edited and mixed recorded sessions in Pro Tools and Pyramix; completed recordings were retained in the institute's archive.</li>
@@ -380,7 +407,10 @@
                     <span class="exp-title">Audio–Text Cross-Modal Retrieval Robustness Analysis</span>
                     <span class="exp-date">March 2026 – May 2026</span>
                 </div>
-                <div class="exp-role">New York University</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">New York University</div>
+                    <div class="exp-organization">New York, NY</div>
+                </div>
                 <ul>
                     <li>Built an evaluation pipeline for 500 ten-second AudioCaps clips, applying high- and low-pass filtering, 10 dB SNR noise, and three-semitone pitch shifts before extracting pretrained LAION-CLAP embeddings.</li>
                     <li>Evaluated R@1, R@5, R@10, and median rank; high-pass filtering and pitch shifting produced an approximately 35% relative decrease in R@1, while low-pass filtering had minimal impact.</li>
@@ -392,7 +422,10 @@
                     <span class="exp-title">Beat Tracking Evaluation &amp; Sonification</span>
                     <span class="exp-date">April 2026 – May 2026</span>
                 </div>
-                <div class="exp-role">New York University</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">New York University</div>
+                    <div class="exp-organization">New York, NY</div>
+                </div>
                 <ul>
                     <li>Implemented and compared spectral-flux, tempogram, and PLP-based deep-learning beat-tracking pipelines on GTZAN, evaluating F-measure across genre and tempo groups.</li>
                     <li>Generated click-track sonifications of predicted and reference beats for perceptual validation and systematic error analysis.</li>
@@ -404,7 +437,10 @@
                     <span class="exp-title">MIDI–Chord Alignment &amp; Evaluation Framework</span>
                     <span class="exp-date">February 2026 – March 2026</span>
                 </div>
-                <div class="exp-role">New York University</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">New York University</div>
+                    <div class="exp-organization">New York, NY</div>
+                </div>
                 <ul>
                     <li>Developed beat-synchronous temporal alignment and chord-label normalization between MIDI-derived references and CREMA predictions.</li>
                     <li>Implemented exact, inversion-invariant, and triad-level accuracy metrics for comparison across label vocabularies and temporal resolutions.</li>
@@ -416,7 +452,10 @@
                     <span class="exp-title">Capstone Project — Composer, Producer &amp; Music Director</span>
                     <span class="exp-date">January 2025 – March 2025</span>
                 </div>
-                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                    <div class="exp-organization">Baltimore, MD</div>
+                </div>
                 <ul>
                     <li>Wrote, arranged, recorded, edited, mixed, and mastered three original pop singles—<em>Milk Coffee</em>, <em>Pear Blossom Rain</em>, and <em>Hollow Shell</em>—to release-ready standards.</li>
                     <li>Composed three original film cues and collaborated closely with the director on audiovisual development.</li>
@@ -430,7 +469,10 @@
                     <span class="exp-title">Music Composition &amp; Score Preparation</span>
                     <span class="exp-date">August 2023 – March 2024</span>
                 </div>
-                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                    <div class="exp-organization">Baltimore, MD</div>
+                </div>
                 <ul>
                     <li>Composed <em>Glimmers</em> and <em>Confronting the Masked</em>, both performed publicly by the Peabody Symphony Orchestra.</li>
                     <li>Composed <em>String Quartet in F</em> for ETHEL; the work was performed in an institute concert.</li>
@@ -443,7 +485,10 @@
                     <span class="exp-title">Game Audio Design</span>
                     <span class="exp-date">September 2022 – December 2022</span>
                 </div>
-                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <div class="exp-meta-row">
+                    <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                    <div class="exp-organization">Baltimore, MD</div>
+                </div>
                 <ul>
                     <li>Designed sound effects, ambience, and original music for interactive game scenes.</li>
                     <li>Implemented event-driven audio across separate Unity- and Wwise-based projects, including audio triggers, scene configurations, and interactive logic.</li>
