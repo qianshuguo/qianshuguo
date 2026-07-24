@@ -128,46 +128,6 @@
             margin-bottom: 31px;
         }
 
-        /* Education */
-        .edu-entry { margin-bottom: 31px; }
-        .edu-entry:last-child { margin-bottom: 0; }
-        .edu-school-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-bottom: 4px;
-        }
-        .edu-school {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 500;
-        }
-        .edu-location {
-            font-size: 15px;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
-            color: var(--muted);
-        }
-        .edu-degree {
-            font-size: 18px;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        .edu-dates {
-            font-size: 16px;
-            color: var(--muted);
-            margin-bottom: 7px;
-        }
-        .edu-note {
-            font-size: 15px;
-            color: var(--muted);
-        }
-
         /* Skills */
         .skills-list {
             list-style: none;
@@ -325,24 +285,30 @@
         <div class="cv-block">
             <div class="block-label">Education</div>
 
-            <div class="edu-entry">
-                <div class="edu-school-row">
-                    <span class="edu-school">New York University, Steinhardt</span>
-                    <span class="edu-location">New York, NY</span>
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Master of Music in Music Technology</span>
+                    <span class="exp-date">September 2025 – May 2027</span>
                 </div>
-                <div class="edu-degree">Master of Music in Music Technology</div>
-                <div class="edu-dates">September 2025 – May 2027</div>
-                <div class="edu-note">GPA: 3.82 / 4.00 · Coursework: Programming in Python, C++, and Java; Data Structures; Music Information Retrieval; Machine Learning; Game Audio; Mixing and Mastering; Immersive Audio</div>
+                <div class="exp-role">New York University, Steinhardt</div>
+                <div class="exp-organization">New York, NY</div>
+                <ul>
+                    <li>GPA: 3.82 / 4.00</li>
+                    <li>Relevant Coursework: Programming in Python, C++, and Java; Data Structures; Music Information Retrieval; Machine Learning; Game Audio; Mixing and Mastering; Immersive Audio</li>
+                </ul>
             </div>
 
-            <div class="edu-entry">
-                <div class="edu-school-row">
-                    <span class="edu-school">Johns Hopkins University, Peabody Institute</span>
-                    <span class="edu-location">Baltimore, MD</span>
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Bachelor of Music in Music for New Media</span>
+                    <span class="exp-date">September 2021 – May 2025</span>
                 </div>
-                <div class="edu-degree">Bachelor of Music in Music for New Media</div>
-                <div class="edu-dates">September 2021 – May 2025</div>
-                <div class="edu-note">GPA: 3.93 / 4.00 · Focus: Film and Game Scoring, Music Production, Sound Design, Jazz Piano, Recording Arts, Conducting</div>
+                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <div class="exp-organization">Baltimore, MD</div>
+                <ul>
+                    <li>GPA: 3.93 / 4.00</li>
+                    <li>Focus: Film and Game Scoring, Music Production, Sound Design, Jazz Piano, Recording Arts, Conducting</li>
+                </ul>
             </div>
         </div>
 
