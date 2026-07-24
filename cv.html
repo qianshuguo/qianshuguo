@@ -6,7 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/CormorantGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/CormorantGaramond-MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link href="assets/fonts/fonts.css" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,7 +75,7 @@
         .cv-download svg { fill: currentColor; }
 
         .cv-page {
-            max-width: 860px;
+            max-width: 920px;
             margin: 0 auto;
             padding: 50px 40px 100px;
         }
@@ -92,7 +92,11 @@
             margin-bottom: 16px;
         }
         .cv-header .contact {
-            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            font-size: 17px;
             color: var(--muted);
             font-style: italic;
             font-family: 'Cormorant Garamond', Georgia, serif;
@@ -107,6 +111,7 @@
             transition: color 0.2s;
         }
         .cv-header .contact a:hover { color: var(--text); }
+        .cv-header .contact span { white-space: nowrap; }
 
         .cv-block {
             background-color: var(--block-bg);
@@ -211,7 +216,7 @@
             font-weight: 400;
         }
         .exp-date {
-            font-size: 18;
+            font-size: 16px;
             font-style: italic;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-weight: 500;
@@ -233,6 +238,11 @@
             line-height: 1.65;
             margin-bottom: 2px;
             color: var(--text);
+        }
+        .exp-organization {
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 7px;
         }
 
         /* Awards */
@@ -270,6 +280,13 @@
             .cv-page { padding: 40px 24px 80px; }
             .cv-block { padding: 28px 24px; }
             .site-nav .links { gap: 18px; }
+            .cv-header { margin-bottom: 54px; }
+            .cv-header .contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+            }
+            .skill-key { min-width: 100%; }
         }
     </style>
 </head>
@@ -290,10 +307,12 @@
         <div class="cv-header">
             <h1>Qianshu Guo</h1>
             <div class="contact">
-                <a href="mailto:qianshu.guo@outlook.com">qianshu.guo@outlook.com</a><br>
-                New York City, USA
+                <span><a href="tel:+16674379366">+1 (667) 437-9366</a></span>
+                <span><a href="mailto:qianshu.guo@outlook.com">qianshu.guo@outlook.com</a></span>
+                <span><a href="https://github.com/qianshuguo" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+                <span><a href="https://qianshuguo.com">qianshuguo.com</a></span>
             </div>
-            <a class="cv-download" href="assets/cv/Resume QG.pdf" download="Resume QG.pdf">
+            <a class="cv-download" href="assets/cv/qianshu_guo-cv.pdf" download="qianshu_guo-cv.pdf">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
                     <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/>
                 </svg>
@@ -308,23 +327,182 @@
 
             <div class="edu-entry">
                 <div class="edu-school-row">
-                    <span class="edu-school">New York University</span>
-                    <span class="edu-location">New York, USA</span>
+                    <span class="edu-school">New York University, Steinhardt</span>
+                    <span class="edu-location">New York, NY</span>
                 </div>
-                <div class="edu-degree">Master of Music Technology</div>
+                <div class="edu-degree">Master of Music in Music Technology</div>
                 <div class="edu-dates">September 2025 – May 2027</div>
-                <div class="edu-note">Top 5% in major · Courses: MIR, Machine Learning (TensorFlow, PyTorch), Game Audio (Wwise, Unity, Unreal Engine), Spatial &amp; Immersive Audio</div>
+                <div class="edu-note">GPA: 3.82 / 4.00 · Coursework: Programming in Python, C++, and Java; Data Structures; Music Information Retrieval; Machine Learning; Game Audio; Mixing and Mastering; Immersive Audio</div>
             </div>
 
             <div class="edu-entry">
                 <div class="edu-school-row">
-                    <span class="edu-school">Peabody Institute, Johns Hopkins University</span>
-                    <span class="edu-location">Baltimore, USA</span>
+                    <span class="edu-school">Johns Hopkins University, Peabody Institute</span>
+                    <span class="edu-location">Baltimore, MD</span>
                 </div>
-                <div class="edu-degree">Bachelor of Music in New Media Music</div>
+                <div class="edu-degree">Bachelor of Music in Music for New Media</div>
                 <div class="edu-dates">September 2021 – May 2025</div>
-                <div class="edu-note">Ranked 1st in major · GPA: 3.93 / 4.00 · Courses: Film &amp; Game Scoring, Sound Design, Recording, Jazz Piano, Conducting</div>
+                <div class="edu-note">GPA: 3.93 / 4.00 · Focus: Film and Game Scoring, Music Production, Sound Design, Jazz Piano, Recording Arts, Conducting</div>
             </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="cv-block">
+            <div class="block-label">Professional Experience</div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Music Production Intern</span>
+                    <span class="exp-date">May 2026 – Present</span>
+                </div>
+                <div class="exp-role">Hunan Satellite TV (Mango TV), <em>Singer 2026</em> Music Team</div>
+                <div class="exp-organization">Changsha, China</div>
+                <ul>
+                    <li>Coordinated lyrics, copyright records, musician schedules, and music requirements across the live band, directing, and technical teams during rehearsals and live broadcasts.</li>
+                    <li>Supported rehearsals for visiting musicians and performance transitions, coordinating schedules, reception, and on-site communication.</li>
+                    <li>Worked with performers and the audio team on in-ear monitor routing and monitor-mix adjustments.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Composer &amp; Sound Designer</span>
+                    <span class="exp-date">September 2024 – January 2025</span>
+                </div>
+                <div class="exp-role">Hangzhou Xihe Culture &amp; Technology Co., Ltd</div>
+                <div class="exp-organization">Hangzhou, China</div>
+                <ul>
+                    <li>Composed original music and sound effects for 12 children's picture books, including <em>My Mom</em>, <em>The Runaway Bunny</em>, and <em>A Seed's Journey</em>, generating more than 100,000 plays and leading to additional commissions.</li>
+                    <li>Created opening, award-ceremony, and performance music for the Zhejiang stage of the 2024 Brilliant Future children's storytelling competition.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">AI Research Intern</span>
+                    <span class="exp-date">June 2024 – August 2024</span>
+                </div>
+                <div class="exp-role">Hangzhou Xuanye Digital Technology Co., Ltd</div>
+                <div class="exp-organization">Hangzhou, China</div>
+                <ul>
+                    <li>Benchmarked major AI music products across publicly documented model approaches, generation capabilities, pricing, licensing, and target use cases; delivered a comparative report supporting product planning.</li>
+                    <li>Recorded audio for the mini-program drama <em>The Magnolia Chronicles</em> and assisted with session materials.</li>
+                    <li>Composed original music for three acts of <em>The Magnolia Chronicles</em>, incorporating elements of Chinese traditional Nuo opera.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Recording Assistant &amp; Engineer</span>
+                    <span class="exp-date">August 2022 – June 2023</span>
+                </div>
+                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <div class="exp-organization">Baltimore, MD</div>
+                <ul>
+                    <li>Recorded opera, jazz, concerto, and choral performances—including <em>Cendrillon</em>—using Neve consoles; supported microphone placement, signal routing, session monitoring, and documentation.</li>
+                    <li>Edited and mixed recorded sessions in Pro Tools and Pyramix; completed recordings were retained in the institute's archive.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Selected Projects -->
+        <div class="cv-block">
+            <div class="block-label">Selected Projects</div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Audio–Text Cross-Modal Retrieval Robustness Analysis</span>
+                    <span class="exp-date">March 2026 – May 2026</span>
+                </div>
+                <div class="exp-role">New York University</div>
+                <ul>
+                    <li>Built an evaluation pipeline for 500 ten-second AudioCaps clips, applying high- and low-pass filtering, 10 dB SNR noise, and three-semitone pitch shifts before extracting pretrained LAION-CLAP embeddings.</li>
+                    <li>Evaluated R@1, R@5, R@10, and median rank; high-pass filtering and pitch shifting produced an approximately 35% relative decrease in R@1, while low-pass filtering had minimal impact.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Beat Tracking Evaluation &amp; Sonification</span>
+                    <span class="exp-date">April 2026 – May 2026</span>
+                </div>
+                <div class="exp-role">New York University</div>
+                <ul>
+                    <li>Implemented and compared spectral-flux, tempogram, and PLP-based deep-learning beat-tracking pipelines on GTZAN, evaluating F-measure across genre and tempo groups.</li>
+                    <li>Generated click-track sonifications of predicted and reference beats for perceptual validation and systematic error analysis.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">MIDI–Chord Alignment &amp; Evaluation Framework</span>
+                    <span class="exp-date">February 2026 – March 2026</span>
+                </div>
+                <div class="exp-role">New York University</div>
+                <ul>
+                    <li>Developed beat-synchronous temporal alignment and chord-label normalization between MIDI-derived references and CREMA predictions.</li>
+                    <li>Implemented exact, inversion-invariant, and triad-level accuracy metrics for comparison across label vocabularies and temporal resolutions.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Capstone Project — Composer, Producer &amp; Music Director</span>
+                    <span class="exp-date">January 2025 – March 2025</span>
+                </div>
+                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <ul>
+                    <li>Wrote, arranged, recorded, edited, mixed, and mastered three original pop singles—<em>Milk Coffee</em>, <em>Pear Blossom Rain</em>, and <em>Hollow Shell</em>—to release-ready standards.</li>
+                    <li>Composed three original film cues and collaborated closely with the director on audiovisual development.</li>
+                    <li>Commissioned by Hangzhou Jianlian Middle School to compose <em>Dreamers</em>, the theme song for its Home-School Co-Education Smart Parenting Program.</li>
+                    <li><em>Dreamers</em> and <em>Hollow Shell</em> were selected for the institute's Outstanding Graduation Works Exhibition.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Music Composition &amp; Score Preparation</span>
+                    <span class="exp-date">August 2023 – March 2024</span>
+                </div>
+                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <ul>
+                    <li>Composed <em>Glimmers</em> and <em>Confronting the Masked</em>, both performed publicly by the Peabody Symphony Orchestra.</li>
+                    <li>Composed <em>String Quartet in F</em> for ETHEL; the work was performed in an institute concert.</li>
+                    <li>Prepared, printed, and bound scores and parts for all ensemble projects.</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-top-row">
+                    <span class="exp-title">Game Audio Design</span>
+                    <span class="exp-date">September 2022 – December 2022</span>
+                </div>
+                <div class="exp-role">Johns Hopkins University, Peabody Institute</div>
+                <ul>
+                    <li>Designed sound effects, ambience, and original music for interactive game scenes.</li>
+                    <li>Implemented event-driven audio across separate Unity- and Wwise-based projects, including audio triggers, scene configurations, and interactive logic.</li>
+                    <li>Established audio naming conventions and asset-management practices to support team collaboration.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Honors -->
+        <div class="cv-block">
+            <div class="block-label">Honors &amp; Features</div>
+            <ul class="awards-list">
+                <li>
+                    <span class="award-name">John and Eileen Hanex Memorial Scholarship — JHU Peabody Institute</span>
+                    <span class="award-prize">October 2022</span>
+                </li>
+                <li>
+                    <span class="award-name">Richard Franko Goldman Memorial Scholarship — JHU Peabody Institute</span>
+                    <span class="award-prize">October 2022</span>
+                </li>
+                <li>
+                    <span class="award-name">Composer Profile — Shoutout LA</span>
+                    <span class="award-prize">October 2024</span>
+                </li>
+            </ul>
         </div>
 
         <!-- Skills -->
@@ -332,90 +510,24 @@
             <div class="block-label">Skills</div>
             <ul class="skills-list">
                 <li>
-                    <span class="skill-key">Languages</span>
-                    <span class="skill-val">Chinese (native), English (fluent), Korean (conversational)</span>
-                </li>
-                <li>
-                    <span class="skill-key">DAWs &amp; Notation</span>
-                    <span class="skill-val">Logic Pro, Cubase, Ableton Live, Pro Tools, Sibelius</span>
+                    <span class="skill-key">Music Production</span>
+                    <span class="skill-val">Logic Pro, Cubase, Ableton Live, Pro Tools, Sibelius, Pyramix, Neve consoles</span>
                 </li>
                 <li>
                     <span class="skill-key">Game Audio</span>
                     <span class="skill-val">Wwise, Unity, Unreal Engine</span>
                 </li>
                 <li>
-                    <span class="skill-key">Programming</span>
-                    <span class="skill-val">Python, C++, Java, C</span>
+                    <span class="skill-key">Programming &amp; ML</span>
+                    <span class="skill-val">Python, C, C++, Java; PyTorch, TensorFlow, Keras</span>
                 </li>
                 <li>
-                    <span class="skill-key">Machine Learning</span>
-                    <span class="skill-val">TensorFlow, PyTorch, MIR (librosa)</span>
+                    <span class="skill-key">Languages</span>
+                    <span class="skill-val">Chinese (native), English (fluent), Korean (basic)</span>
                 </li>
                 <li>
                     <span class="skill-key">Instruments</span>
-                    <span class="skill-val">Piano (professional), Acoustic Guitar, Electric Guitar</span>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Experience -->
-        <div class="cv-block">
-            <div class="block-label">Experience</div>
-
-            <div class="exp-entry">
-                <div class="exp-top-row">
-                    <span class="exp-title">Hangzhou Xihe Culture Technology</span>
-                    <span class="exp-date">Sep 2024 – Jan 2025</span>
-                </div>
-                <div class="exp-role">Picture Book Music Composer</div>
-                <ul>
-                    <li>Composed background music and sound effects for 12 children's picture books, including <em>My Mom</em>, <em>The Runaway Bunny</em>, and <em>A Seed's Journey</em>; published on the "美妈讲绘本" app with 100,000+ total plays.</li>
-                    <li>Designed stage music for the 2024 National Children's Picture Book Story Exhibition (Zhejiang Provincial): opening, awards ceremony, and guest performance cues.</li>
-                </ul>
-            </div>
-
-            <div class="exp-entry">
-                <div class="exp-top-row">
-                    <span class="exp-title">Peabody Institute, Johns Hopkins University</span>
-                    <span class="exp-date">Aug 2022 – Jun 2023</span>
-                </div>
-                <div class="exp-role">Recording Assistant &amp; Engineer</div>
-                <ul>
-                    <li>Assisted professional recording sessions for opera, jazz ensemble, concerto, and choral works (including <em>Cendrillon Act 2</em>) in Peabody's studio facility.</li>
-                    <li>Operated Neve console; handled mic placement, signal routing, and monitor management.</li>
-                    <li>Completed post-editing and mixing in Pro Tools and Pyramix across country, pop, and chamber music projects; select recordings archived by the conservatory.</li>
-                </ul>
-            </div>
-
-            <div class="exp-entry">
-                <div class="exp-top-row">
-                    <span class="exp-title">Hangzhou Xuanye Digital Technology</span>
-                    <span class="exp-date">Jun 2024 – Aug 2024</span>
-                </div>
-                <div class="exp-role">Music Intern</div>
-                <ul>
-                    <li>Researched major AI music platforms; produced a comparative report on algorithms, membership models, and use cases to inform product strategy.</li>
-                    <li>Composed 3-act score for the mini-series <em>玉兰记</em>, incorporating traditional Nuo opera elements; supervised on-set audio recording sessions.</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- Awards -->
-        <div class="cv-block">
-            <div class="block-label">Awards &amp; Recognition</div>
-            <ul class="awards-list">
-                <li>
-                    <span class="award-name">John &amp; Aileen Harness Memorial Scholarship — Peabody Institute</span>
-                    <span class="award-prize">May 2023</span>
-                </li>
-                <li>
-                    <span class="award-name">Richard Franco Goldman Memorial Scholarship — Peabody Institute</span>
-                    <span class="award-prize">May 2023</span>
-                </li>
-                <li>
-                    <span class="award-name">Featured composer interview — Shoutout LA</span>
-                    <span class="award-prize">Oct 2024</span>
+                    <span class="skill-val">Jazz Piano, Acoustic Guitar, Electric Guitar</span>
                 </li>
             </ul>
         </div>
