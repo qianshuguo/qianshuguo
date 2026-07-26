@@ -22,14 +22,6 @@
     font-style: normal;
     font-display: block;
 }
-@font-face {
-    font-family: 'EB Garamond';
-    src: url('EBGaramond-Italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: block;
-}
-
 /* Cormorant Garamond — italic accents */
 @font-face {
     font-family: 'Cormorant Garamond';
