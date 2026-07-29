@@ -32,26 +32,11 @@
             gap: 32px;
         }
         .site-nav .links a {
-            position: relative;
             font-size: 16px;
             color: var(--link);
             text-decoration: none;
             letter-spacing: .04em;
-            padding-bottom: 5px;
             transition: color 0.42s ease, transform 0.32s ease;
-        }
-        .site-nav .links a::after {
-            content: "";
-            position: absolute;
-            right: -8px;
-            bottom: 0;
-            left: -8px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent) 35%, var(--accent) 65%, transparent);
-            opacity: 0;
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 0.42s cubic-bezier(.22, .8, .24, 1), opacity 0.30s ease;
         }
         .site-nav .links a:hover {
             color: var(--accent-hover);
@@ -59,10 +44,6 @@
         }
         .site-nav .links a[aria-current="page"] {
             color: var(--accent);
-        }
-        .site-nav .links a[aria-current="page"]::after {
-            opacity: 1;
-            transform: scaleX(1);
         }
         .site-nav .links a:focus-visible {
             outline: 1px solid rgba(138, 114, 82, 0.45);
@@ -72,7 +53,7 @@
         .page-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 44px 40px 100px;
+            padding: 38px 40px 100px;
         }
 
         .page-title {
@@ -180,14 +161,13 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 20px 24px; }
-            .page-content { padding: 38px 24px 80px; }
+            .page-content { padding: 32px 24px 80px; }
             .site-nav .links { gap: 20px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .site-nav .name,
-            .site-nav .links a,
-            .site-nav .links a::after {
+            .site-nav .links a {
                 transition: none;
             }
             .site-nav .links a:hover { transform: none; }

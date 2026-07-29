@@ -36,26 +36,11 @@
             gap: 32px;
         }
         .site-nav .links a {
-            position: relative;
             font-size: 16px;
             color: var(--link);
             text-decoration: none;
             letter-spacing: .04em;
-            padding-bottom: 5px;
             transition: color 0.42s ease, transform 0.32s ease;
-        }
-        .site-nav .links a::after {
-            content: "";
-            position: absolute;
-            right: -8px;
-            bottom: 0;
-            left: -8px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent) 35%, var(--accent) 65%, transparent);
-            opacity: 0;
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 0.42s cubic-bezier(.22, .8, .24, 1), opacity 0.30s ease;
         }
         .site-nav .links a:hover {
             color: var(--accent-hover);
@@ -63,10 +48,6 @@
         }
         .site-nav .links a[aria-current="page"] {
             color: var(--accent);
-        }
-        .site-nav .links a[aria-current="page"]::after {
-            opacity: 1;
-            transform: scaleX(1);
         }
         .site-nav .links a:focus-visible {
             outline: 1px solid rgba(138, 114, 82, 0.45);
@@ -76,7 +57,7 @@
         .page-content {
             max-width: 960px;
             margin: 0 auto;
-            padding: 44px 40px 100px;
+            padding: 38px 40px 100px;
         }
 
         .page-title {
@@ -144,7 +125,8 @@
             grid-template-columns: 1fr 1fr;
             column-gap: 32px;
             row-gap: 56px;
-            min-height: 640px;
+            align-content: start;
+            min-height: 800px;
         }
 
         .work-item {
@@ -392,7 +374,7 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 20px 24px; }
-            .page-content { padding: 38px 24px 80px; }
+            .page-content { padding: 32px 24px 80px; }
             .site-nav .links { gap: 20px; }
             .filter-section {
                 margin-top: 56px;
@@ -409,7 +391,6 @@
             html { scroll-behavior: auto; }
             .site-nav .name,
             .site-nav .links a,
-            .site-nav .links a::after,
             .filter-tabs button,
             .sc-play-btn {
                 transition: none;
@@ -442,7 +423,7 @@
             <div class="showreel-text">
                 <div class="showreel-label">Showreel</div>
                 <p class="showreel-desc">This video brings together some of my favorite scoring and composition work from the past several years. It reflects the way I think about music and my interest in blending cinematic storytelling with orchestral writing, jazz harmony, electronic textures, sound design, and contemporary composition.</p>
-                <p class="showreel-desc">The featured works include <em>Confronting the Masked Re-score</em>, inspired by the dramatic sound of traditional Hollywood blockbuster scores; <em>Ghost of Tsushima Original Score</em>, which explores regional instruments and musical colors; <em>Trail of Light Original Score</em>, combining electronic music, orchestral elements, and sound design; and <em>Glimmers</em>, a contemporary concert work.</p>
+                <p class="showreel-desc">The featured works include <em>Confronting the Masked Re-score</em>, <em>Ghost of Tsushima Original Score</em>, <em>Trail of Light Original Score</em>, and <em>Glimmers</em>.</p>
                 <a class="scroll-cue" href="#works-filter">
                     <span>Explore all works</span>
                     <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
@@ -468,7 +449,7 @@
             <div class="work-item" data-category="compositions">
                 <div class="work-text">
                     <div class="work-title">Glimmers</div>
-                    <div class="work-desc">Orchestral work written for and performed by the Peabody Symphony Orchestra.</div>
+                    <div class="work-desc">A contemporary concert work written for and performed by the Peabody Symphony Orchestra.</div>
                 </div>
                 <div class="video-embed">
                     <iframe data-src="https://www.youtube.com/embed/8hSRID5KJuM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -499,7 +480,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Confronting the Masked Re-score</div>
-                    <div class="work-desc">Full orchestral re-score for the climactic confrontation between Hero Squad and Yokai from Disney's Big Hero 6.</div>
+                    <div class="work-desc">Full orchestral re-score for the climactic confrontation between Hero Squad and Yokai from Disney's Big Hero 6, inspired by the dramatic sound of traditional Hollywood blockbuster scores.</div>
                 </div>
                 <div class="video-embed">
                     <iframe data-src="https://www.youtube.com/embed/ZoArfFYbaAw" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -509,7 +490,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Ghost of Tsushima Original Score</div>
-                    <div class="work-desc">Original orchestral score written for the LeiCine Scoring Project 2023 competition.</div>
+                    <div class="work-desc">Original orchestral score written for the LeiCine Scoring Project 2023 competition, exploring regional instruments and musical colors.</div>
                 </div>
                 <div class="video-embed">
                     <iframe data-src="https://www.youtube.com/embed/OJHBugGO3E0" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -519,7 +500,7 @@
             <div class="work-item" data-category="movies">
                 <div class="work-text">
                     <div class="work-title">Trail of Light Original Score</div>
-                    <div class="work-desc">Hybrid orchestral and electronic score written for the BIFSC 2024 film scoring competition, blending orchestral and synth textures with sacred choral colors and sci-fi elements.</div>
+                    <div class="work-desc">Hybrid score written for the BIFSC 2024 film scoring competition, combining electronic music, orchestral elements, and sound design with sacred choral colors and sci-fi textures.</div>
                 </div>
                 <div class="video-embed">
                     <iframe data-src="https://www.youtube.com/embed/NpdmTZiARDo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
