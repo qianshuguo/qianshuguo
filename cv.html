@@ -4,6 +4,7 @@
     <title>CV — Qianshu Guo</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='theme-color' content='#f5f2eb'/>
     <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/CormorantGaramond-MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
@@ -12,15 +13,20 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg: #e8e4de;
-            --text: #2d2926;
-            --muted: #7a7068;
-            --border: #d0cbc4;
-            --block-bg: #f0ede8;
+            --bg: #f5f2eb;
+            --text: #2c2a26;
+            --muted: #726c63;
+            --link: #5f594f;
+            --accent: #8a7252;
+            --border: #d9d1c4;
+            --nav-border: rgba(65, 58, 48, 0.09);
+            --block-bg: rgba(255, 255, 255, 0.38);
+            --block-border: rgba(65, 58, 48, 0.10);
         }
 
         html, body {
             background-color: var(--bg);
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 280px);
             color: var(--text);
             font-family: 'EB Garamond', Georgia, serif;
             font-size: 17px;
@@ -29,10 +35,22 @@
         }
 
         .site-nav {
+            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 24px 48px;
+        }
+        .site-nav::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background:
+                linear-gradient(90deg, var(--nav-border) 32%, transparent) left center / clamp(170px, 32vw, 360px) 1px no-repeat,
+                linear-gradient(90deg, transparent, var(--nav-border) 68%) right center / clamp(280px, 46vw, 520px) 1px no-repeat;
         }
         .site-nav .name {
             font-family: 'Playfair Display', serif;
@@ -50,12 +68,12 @@
         .site-nav .links a {
             font-family: 'EB Garamond', Georgia, serif;
             font-size: 16px;
-            color: #5a544e;
+            color: var(--link);
             text-decoration: none;
             letter-spacing: .04em;
             transition: color 0.2s;
         }
-        .site-nav .links a:hover { color: var(--text); }
+        .site-nav .links a:hover { color: var(--accent); }
         .cv-download {
             display: inline-flex;
             align-items: center;
@@ -71,13 +89,13 @@
             transition: color 0.2s, border-color 0.2s;
             margin-top: 30px;
         }
-        .cv-download:hover { color: var(--text); border-color: var(--text); }
+        .cv-download:hover { color: var(--accent); border-color: var(--accent); }
         .cv-download svg { fill: currentColor; }
 
         .cv-page {
             max-width: 920px;
             margin: 0 auto;
-            padding: 50px 40px 100px;
+            padding: 56px 40px 100px;
         }
 
         .cv-header {
@@ -115,7 +133,11 @@
 
         .cv-block {
             background-color: var(--block-bg);
-            border-radius: 4px;
+            border: 1px solid var(--block-border);
+            border-radius: 3px;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.55),
+                0 8px 24px rgba(65, 58, 48, 0.025);
             padding: 40px 44px;
             margin-bottom: 18px;
         }
@@ -252,7 +274,7 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 18px 24px; }
-            .cv-page { padding: 40px 24px 80px; }
+            .cv-page { padding: 48px 24px 80px; }
             .cv-block { padding: 28px 24px; }
             .site-nav .links { gap: 18px; }
             .cv-header { margin-bottom: 54px; }

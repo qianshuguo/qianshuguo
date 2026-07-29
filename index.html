@@ -4,17 +4,23 @@
     <title>Qianshu Guo</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <meta name='theme-color' content='#e8e4de'/>
+    <meta name='theme-color' content='#f5f2eb'/>
     <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/CormorantGaramond-MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link href="assets/fonts/fonts.css" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --bg: #e8e4de; --text: #2d2926; --muted: #7a7068; }
+        :root {
+            --bg: #f5f2eb;
+            --text: #2c2a26;
+            --muted: #726c63;
+            --accent: #8a7252;
+        }
 
         html, body {
             background-color: var(--bg);
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 280px);
             color: var(--text);
             font-family: 'EB Garamond', Georgia, serif;
             height: 100%;
@@ -64,7 +70,7 @@
             letter-spacing: .01em;
             transition: color 0.2s;
         }
-        .hero-links a:hover { color: var(--muted); }
+        .hero-links a:hover { color: var(--accent); }
 
         @media (max-width: 600px) {
             .hero { padding: 60px 24px; }
