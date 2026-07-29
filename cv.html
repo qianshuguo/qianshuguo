@@ -18,8 +18,8 @@
             --muted: #726c63;
             --link: #5f594f;
             --accent: #8a7252;
+            --accent-hover: #735c40;
             --border: #d9d1c4;
-            --nav-border: rgba(65, 58, 48, 0.09);
             --block-bg: rgba(255, 255, 255, 0.38);
             --block-border: rgba(65, 58, 48, 0.10);
         }
@@ -35,22 +35,10 @@
         }
 
         .site-nav {
-            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 24px 48px;
-        }
-        .site-nav::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: 1px;
-            background:
-                linear-gradient(90deg, var(--nav-border) 32%, transparent) left center / clamp(170px, 32vw, 360px) 1px no-repeat,
-                linear-gradient(90deg, transparent, var(--nav-border) 68%) right center / clamp(280px, 46vw, 520px) 1px no-repeat;
         }
         .site-nav .name {
             font-family: 'Playfair Display', serif;
@@ -59,21 +47,52 @@
             letter-spacing: .04em;
             text-decoration: none;
             color: var(--text);
+            transition: color 0.42s ease;
         }
+        .site-nav .name:hover { color: var(--accent-hover); }
         .site-nav .links {
             display: flex;
             gap: 32px;
             align-items: center;
         }
         .site-nav .links a {
+            position: relative;
             font-family: 'EB Garamond', Georgia, serif;
             font-size: 16px;
             color: var(--link);
             text-decoration: none;
             letter-spacing: .04em;
-            transition: color 0.2s;
+            padding-bottom: 5px;
+            transition: color 0.42s ease, transform 0.32s ease;
         }
-        .site-nav .links a:hover { color: var(--accent); }
+        .site-nav .links a::after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            bottom: 0;
+            left: -8px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent) 35%, var(--accent) 65%, transparent);
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.42s cubic-bezier(.22, .8, .24, 1), opacity 0.30s ease;
+        }
+        .site-nav .links a:hover {
+            color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+        .site-nav .links a[aria-current="page"] {
+            color: var(--accent);
+        }
+        .site-nav .links a[aria-current="page"]::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+        .site-nav .links a:focus-visible {
+            outline: 1px solid rgba(138, 114, 82, 0.45);
+            outline-offset: 4px;
+        }
         .cv-download {
             display: inline-flex;
             align-items: center;
@@ -285,6 +304,15 @@
             }
             .skill-key { min-width: 100%; }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-nav .name,
+            .site-nav .links a,
+            .site-nav .links a::after {
+                transition: none;
+            }
+            .site-nav .links a:hover { transform: none; }
+        }
     </style>
 </head>
 <body>
@@ -294,7 +322,7 @@
         <div class="links">
             <a href="works.html">Works</a>
             <a href="about.html">About</a>
-            <a href="cv.html">CV</a>
+            <a href="cv.html" aria-current="page">CV</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>

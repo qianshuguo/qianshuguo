@@ -12,13 +12,12 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
             --bg: #f5f2eb;
-            --tabs-bg: #eee9df;
             --text: #2c2a26;
             --muted: #726c63;
             --link: #5f594f;
             --accent: #8a7252;
+            --accent-hover: #735c40;
             --border: #d9d1c4;
-            --nav-border: rgba(65, 58, 48, 0.09);
         }
 
         html, body {
@@ -31,22 +30,10 @@
         }
 
         .site-nav {
-            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 24px 48px;
-        }
-        .site-nav::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: 1px;
-            background:
-                linear-gradient(90deg, var(--nav-border) 32%, transparent) left center / clamp(170px, 32vw, 360px) 1px no-repeat,
-                linear-gradient(90deg, transparent, var(--nav-border) 68%) right center / clamp(280px, 46vw, 520px) 1px no-repeat;
         }
         .site-nav .name {
             font-family: 'Playfair Display', serif;
@@ -55,19 +42,50 @@
             letter-spacing: .04em;
             text-decoration: none;
             color: var(--text);
+            transition: color 0.42s ease;
         }
+        .site-nav .name:hover { color: var(--accent-hover); }
         .site-nav .links {
             display: flex;
             gap: 32px;
         }
         .site-nav .links a {
+            position: relative;
             font-size: 16px;
             color: var(--link);
             text-decoration: none;
             letter-spacing: .04em;
-            transition: color 0.2s;
+            padding-bottom: 5px;
+            transition: color 0.42s ease, transform 0.32s ease;
         }
-        .site-nav .links a:hover { color: var(--accent); }
+        .site-nav .links a::after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            bottom: 0;
+            left: -8px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent) 35%, var(--accent) 65%, transparent);
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.42s cubic-bezier(.22, .8, .24, 1), opacity 0.30s ease;
+        }
+        .site-nav .links a:hover {
+            color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+        .site-nav .links a[aria-current="page"] {
+            color: var(--accent);
+        }
+        .site-nav .links a[aria-current="page"]::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+        .site-nav .links a:focus-visible {
+            outline: 1px solid rgba(138, 114, 82, 0.45);
+            outline-offset: 4px;
+        }
 
         .page-content {
             max-width: 960px;
@@ -84,22 +102,28 @@
         }
 
         /* ── Filter tabs ── */
+        .filter-section {
+            margin: 72px 0 56px;
+        }
+        .filter-label {
+            margin-bottom: 14px;
+            font-size: 11px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
         .filter-tabs {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
-            background-color: var(--tabs-bg);
-            padding: 0 16px;
-            margin-bottom: 48px;
-            border-bottom: 1px solid var(--border);
+            gap: 10px;
+            padding: 0;
             overflow: visible;
         }
         .filter-tabs button {
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(65, 58, 48, 0.16);
+            border-radius: 2px;
+            padding: 7px 14px 8px;
             font-family: 'EB Garamond', Georgia, serif;
             font-size: 14px;
             letter-spacing: .06em;
@@ -107,12 +131,27 @@
             color: var(--muted);
             cursor: pointer;
             white-space: nowrap;
-            transition: color 0.2s, border-color 0.2s;
+            transition:
+                color 0.24s ease,
+                background-color 0.24s ease,
+                border-color 0.24s ease,
+                transform 0.24s ease;
         }
-        .filter-tabs button:hover { color: var(--text); }
+        .filter-tabs button:hover {
+            color: var(--accent-hover);
+            background-color: rgba(138, 114, 82, 0.08);
+            border-color: rgba(115, 92, 64, 0.34);
+            transform: translateY(-1px);
+        }
+        .filter-tabs button:focus-visible {
+            outline: 1px solid rgba(138, 114, 82, 0.45);
+            outline-offset: 4px;
+        }
         .filter-tabs button.active {
-            color: var(--text);
-            border-bottom-color: var(--accent);
+            color: var(--accent-hover);
+            background-color: rgba(138, 114, 82, 0.13);
+            border-color: rgba(115, 92, 64, 0.38);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
         }
 
         /* ── Work items ── */
@@ -160,6 +199,21 @@
         }
 
         .work-item.hidden { display: none; }
+        .work-item.is-revealing {
+            animation: work-reveal 0.34s cubic-bezier(.22, .8, .24, 1) both;
+            animation-delay: var(--reveal-delay, 0ms);
+        }
+
+        @keyframes work-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
 
         .no-results {
@@ -175,7 +229,7 @@
 
         /* ── Showreel ── */
         .showreel-section {
-            margin-bottom: 56px;
+            margin-bottom: 0;
         }
         .showreel-label {
             font-family: 'Playfair Display', serif;
@@ -195,6 +249,14 @@
             background: #1a1816;
             margin: 12px 0 0;
             cursor: pointer;
+            box-shadow:
+                0 2px 7px rgba(65, 58, 48, 0.10),
+                0 11px 26px rgba(65, 58, 48, 0.16);
+        }
+        .showreel-section .video-embed {
+            box-shadow:
+                0 3px 8px rgba(65, 58, 48, 0.12),
+                0 17px 38px rgba(65, 58, 48, 0.20);
         }
         .video-embed iframe {
             position: absolute;
@@ -290,8 +352,27 @@
             .site-nav { padding: 20px 24px; }
             .page-content { padding: 48px 24px 80px; }
             .site-nav .links { gap: 20px; }
-            .filter-tabs { column-gap: 18px; row-gap: 0; }
-            .filter-tabs button { padding: 10px 0; font-size: 13px; }
+            .filter-section {
+                margin-top: 56px;
+                margin-bottom: 46px;
+            }
+            .filter-label { margin-bottom: 12px; }
+            .filter-tabs {
+                gap: 8px;
+            }
+            .filter-tabs button { padding: 6px 11px 7px; font-size: 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-nav .name,
+            .site-nav .links a,
+            .site-nav .links a::after,
+            .filter-tabs button {
+                transition: none;
+            }
+            .site-nav .links a:hover,
+            .filter-tabs button:hover { transform: none; }
+            .work-item.is-revealing { animation: none; }
         }
     </style>
 </head>
@@ -300,7 +381,7 @@
     <nav class="site-nav">
         <a class="name" href="index.html">Qianshu Guo</a>
         <div class="links">
-            <a href="works.html">Works</a>
+            <a href="works.html" aria-current="page">Works</a>
             <a href="about.html">About</a>
             <a href="cv.html">CV</a>
             <a href="contact.html">Contact</a>
@@ -318,14 +399,17 @@
             </div>
         </div>
 
-        <div class="filter-tabs">
-            <button class="active" data-filter="movies">Films</button>
-            <button data-filter="compositions">Compositions</button>
-            <button data-filter="trailers">Trailers</button>
-            <button data-filter="video-games">Game</button>
-            <button data-filter="sound-design">Sound Design</button>
-            <button data-filter="soundtracks">Soundtracks</button>
-        </div>
+        <section class="filter-section" aria-labelledby="works-filter-label">
+            <div class="filter-label" id="works-filter-label">Browse works</div>
+            <div class="filter-tabs" role="group" aria-label="Filter works by category">
+                <button type="button" class="active" data-filter="movies" aria-pressed="true">Films</button>
+                <button type="button" data-filter="compositions" aria-pressed="false">Compositions</button>
+                <button type="button" data-filter="trailers" aria-pressed="false">Trailers</button>
+                <button type="button" data-filter="video-games" aria-pressed="false">Game</button>
+                <button type="button" data-filter="sound-design" aria-pressed="false">Sound Design</button>
+                <button type="button" data-filter="soundtracks" aria-pressed="false">Soundtracks</button>
+            </div>
+        </section>
 
         <div id="works-list">
 
@@ -684,20 +768,34 @@
         /* ── Filter ── */
         function applyFilter(filter) {
             var visible = 0;
+            var visibleItems = [];
             items.forEach(function(item) {
                 var match = item.dataset.category === filter;
+                item.classList.remove('is-revealing');
                 item.classList.toggle('hidden', !match);
-                if (match) visible++;
+                if (match) {
+                    item.style.setProperty('--reveal-delay', (visible * 45) + 'ms');
+                    visibleItems.push(item);
+                    visible++;
+                }
             });
             noResults.classList.toggle('visible', visible === 0);
+            requestAnimationFrame(function() {
+                visibleItems.forEach(function(item) {
+                    item.classList.add('is-revealing');
+                });
+            });
         }
 
         applyFilter('movies');
 
         tabs.forEach(function(tab) {
             tab.addEventListener('click', function() {
-                tabs.forEach(function(t) { t.classList.remove('active'); });
-                tab.classList.add('active');
+                tabs.forEach(function(t) {
+                    var isActive = t === tab;
+                    t.classList.toggle('active', isActive);
+                    t.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                });
                 applyFilter(tab.dataset.filter);
             });
         });
