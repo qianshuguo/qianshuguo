@@ -10,6 +10,11 @@
     <link href="assets/fonts/fonts.css" rel="stylesheet">
     <link href="assets/site.css" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 24px;
+        }
+
         .site-nav {
             display: flex;
             justify-content: space-between;
@@ -71,7 +76,7 @@
         .page-content {
             max-width: 960px;
             margin: 0 auto;
-            padding: 56px 40px 100px;
+            padding: 44px 40px 100px;
         }
 
         .page-title {
@@ -115,14 +120,12 @@
             transition:
                 color 0.24s ease,
                 background-color 0.24s ease,
-                border-color 0.24s ease,
-                transform 0.24s ease;
+                border-color 0.24s ease;
         }
         .filter-tabs button:hover {
             color: var(--accent-hover);
             background-color: rgba(138, 114, 82, 0.08);
             border-color: rgba(115, 92, 64, 0.34);
-            transform: translateY(-1px);
         }
         .filter-tabs button:focus-visible {
             outline: 1px solid rgba(138, 114, 82, 0.45);
@@ -141,6 +144,7 @@
             grid-template-columns: 1fr 1fr;
             column-gap: 32px;
             row-gap: 56px;
+            min-height: 640px;
         }
 
         .work-item {
@@ -161,7 +165,10 @@
         }
 
         @media (max-width: 640px) {
-            #works-list { grid-template-columns: 1fr; }
+            #works-list {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
             .work-item { padding-bottom: 30px; }
         }
 
@@ -188,11 +195,11 @@
         @keyframes work-reveal {
             from {
                 opacity: 0;
-                transform: translateY(8px);
+                transform: translate3d(var(--reveal-x, 0px), 0, 0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
@@ -212,13 +219,47 @@
         .showreel-section {
             margin-bottom: 0;
         }
+        .showreel-text {
+            width: 100%;
+            padding-top: 28px;
+        }
         .showreel-label {
             font-family: 'Playfair Display', serif;
-            font-size: 23px;
-            letter-spacing: .05em;
-            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: .01em;
             color: var(--text);
-            margin-bottom: 20px;
+            margin-bottom: 6px;
+        }
+        .showreel-desc {
+            width: 100%;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+        .showreel-desc + .showreel-desc {
+            margin-top: 12px;
+        }
+        .scroll-cue {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.30s ease;
+        }
+        .scroll-cue:hover { color: var(--accent-hover); }
+        .scroll-cue:focus-visible {
+            outline: 1px solid rgba(138, 114, 82, 0.45);
+            outline-offset: 4px;
+        }
+        .scroll-cue-arrow {
+            font-size: 15px;
+            line-height: 1;
         }
 
         /* ── Responsive video embed ── */
@@ -235,9 +276,10 @@
                 0 11px 26px rgba(65, 58, 48, 0.16);
         }
         .showreel-section .video-embed {
+            margin-top: 0;
             box-shadow:
-                0 3px 8px rgba(65, 58, 48, 0.12),
-                0 17px 38px rgba(65, 58, 48, 0.20);
+                0 3px 7px rgba(65, 58, 48, 0.10),
+                0 14px 32px rgba(65, 58, 48, 0.17);
         }
         .video-embed iframe {
             position: absolute;
@@ -287,17 +329,34 @@
             flex-shrink: 0;
             width: 36px;
             height: 36px;
-            border-radius: 0;
-            border: 1.5px solid var(--border);
-            background: none;
+            border-radius: 2px;
+            border: 1px solid rgba(65, 58, 48, 0.16);
+            background: rgba(255, 255, 255, 0.18);
             cursor: pointer;
             color: var(--muted);
-            transition: border-color 0.25s, color 0.25s;
+            transition:
+                color 0.24s ease,
+                background-color 0.24s ease,
+                border-color 0.24s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .sc-play-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .sc-play-btn:hover {
+            color: var(--accent-hover);
+            background-color: rgba(138, 114, 82, 0.08);
+            border-color: rgba(115, 92, 64, 0.34);
+        }
+        .sc-play-btn:focus-visible {
+            outline: 1px solid rgba(138, 114, 82, 0.45);
+            outline-offset: 4px;
+        }
+        .sc-play-btn.playing {
+            color: var(--accent-hover);
+            background-color: rgba(138, 114, 82, 0.13);
+            border-color: rgba(115, 92, 64, 0.38);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+        }
         .sc-play-btn::before {
             content: '';
             display: block;
@@ -318,6 +377,8 @@
             overflow: hidden;
             height: 70px;
             position: relative;
+            background-color: var(--bg);
+            isolation: isolate;
         }
         .soundcloud-embed iframe {
             position: absolute;
@@ -331,7 +392,7 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 20px 24px; }
-            .page-content { padding: 48px 24px 80px; }
+            .page-content { padding: 38px 24px 80px; }
             .site-nav .links { gap: 20px; }
             .filter-section {
                 margin-top: 56px;
@@ -345,14 +406,15 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
             .site-nav .name,
             .site-nav .links a,
             .site-nav .links a::after,
-            .filter-tabs button {
+            .filter-tabs button,
+            .sc-play-btn {
                 transition: none;
             }
-            .site-nav .links a:hover,
-            .filter-tabs button:hover { transform: none; }
+            .site-nav .links a:hover { transform: none; }
             .work-item.is-revealing { animation: none; }
         }
     </style>
@@ -374,13 +436,21 @@
 
         <!-- Showreel -->
         <div class="showreel-section">
-            <div class="showreel-label">Showreel</div>
             <div class="video-embed">
                 <iframe data-src="https://www.youtube.com/embed/WJOovnEl3wg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             </div>
+            <div class="showreel-text">
+                <div class="showreel-label">Showreel</div>
+                <p class="showreel-desc">This video brings together some of my favorite scoring and composition work from the past several years. It reflects the way I think about music and my interest in blending cinematic storytelling with orchestral writing, jazz harmony, electronic textures, sound design, and contemporary composition.</p>
+                <p class="showreel-desc">The featured works include <em>Confronting the Masked Re-score</em>, inspired by the dramatic sound of traditional Hollywood blockbuster scores; <em>Ghost of Tsushima Original Score</em>, which explores regional instruments and musical colors; <em>Trail of Light Original Score</em>, combining electronic music, orchestral elements, and sound design; and <em>Glimmers</em>, a contemporary concert work.</p>
+                <a class="scroll-cue" href="#works-filter">
+                    <span>Explore all works</span>
+                    <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
+                </a>
+            </div>
         </div>
 
-        <section class="filter-section" aria-labelledby="works-filter-label">
+        <section class="filter-section" id="works-filter" aria-labelledby="works-filter-label">
             <div class="filter-label" id="works-filter-label">Browse works</div>
             <div class="filter-tabs" role="group" aria-label="Filter works by category">
                 <button type="button" class="active" data-filter="movies" aria-pressed="true">Films</button>
@@ -718,7 +788,7 @@
     </div>
 
     <script>
-        const tabs = document.querySelectorAll('.filter-tabs button');
+        const tabs = Array.from(document.querySelectorAll('.filter-tabs button'));
         const items = document.querySelectorAll('.work-item');
         const noResults = document.getElementById('no-results');
 
@@ -747,7 +817,7 @@
         setupYouTubeFacades();
 
         /* ── Filter ── */
-        function applyFilter(filter) {
+        function applyFilter(filter, direction) {
             var visible = 0;
             var visibleItems = [];
             items.forEach(function(item) {
@@ -756,6 +826,7 @@
                 item.classList.toggle('hidden', !match);
                 if (match) {
                     item.style.setProperty('--reveal-delay', (visible * 45) + 'ms');
+                    item.style.setProperty('--reveal-x', ((direction || 0) * 22) + 'px');
                     visibleItems.push(item);
                     visible++;
                 }
@@ -768,16 +839,21 @@
             });
         }
 
-        applyFilter('movies');
+        var activeTabIndex = 0;
+        applyFilter('movies', 0);
 
         tabs.forEach(function(tab) {
             tab.addEventListener('click', function() {
+                var nextTabIndex = tabs.indexOf(tab);
+                if (nextTabIndex === activeTabIndex) return;
+                var direction = nextTabIndex > activeTabIndex ? 1 : -1;
+                activeTabIndex = nextTabIndex;
                 tabs.forEach(function(t) {
                     var isActive = t === tab;
                     t.classList.toggle('active', isActive);
                     t.setAttribute('aria-pressed', isActive ? 'true' : 'false');
                 });
-                applyFilter(tab.dataset.filter);
+                applyFilter(tab.dataset.filter, direction);
             });
         });
     </script>
