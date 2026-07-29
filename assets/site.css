@@ -1,0 +1,43 @@
+/*
+ * Shared page canvas.
+ *
+ * The background belongs exclusively to the root element. Keeping body
+ * transparent prevents short pages from ending in a second, differently
+ * blended background layer.
+ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #f5f2eb;
+    --text: #2c2a26;
+    --muted: #726c63;
+    --link: #5f594f;
+    --accent: #8a7252;
+    --accent-hover: #735c40;
+    --border: #d9d1c4;
+}
+
+html {
+    min-height: 100%;
+    background-color: var(--bg);
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22) 0,
+        rgba(255, 255, 255, 0) 280px
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 280px;
+}
+
+body {
+    min-height: 100vh;
+    background: transparent;
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
