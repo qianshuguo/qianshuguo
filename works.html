@@ -9,6 +9,7 @@
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link href="assets/fonts/fonts.css" rel="stylesheet">
     <link href="assets/site.css" rel="stylesheet">
+    <script src="assets/site.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -135,6 +136,19 @@
             padding-bottom: 26px;
             border-bottom: 1px solid var(--border);
         }
+        .work-item:has(.video-embed):not(.is-media-ready),
+        .showreel-section:not(.is-media-ready) {
+            visibility: hidden;
+        }
+        .work-item.is-media-revealing,
+        .showreel-section.is-media-revealing {
+            animation: media-pair-reveal 0.2s ease both !important;
+        }
+
+        @keyframes media-pair-reveal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
         .work-text {
             order: 2;
@@ -250,15 +264,24 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            background: #1a1816;
+            background: transparent;
             margin: 12px 0 0;
             cursor: pointer;
+            box-shadow: none;
+            transition:
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+        .video-embed.is-ready {
+            background: #1a1816;
             box-shadow:
                 0 2px 7px rgba(65, 58, 48, 0.10),
                 0 11px 26px rgba(65, 58, 48, 0.16);
         }
         .showreel-section .video-embed {
             margin-top: 0;
+        }
+        .showreel-section .video-embed.is-ready {
             box-shadow:
                 0 3px 7px rgba(65, 58, 48, 0.10),
                 0 14px 32px rgba(65, 58, 48, 0.17);
@@ -269,12 +292,16 @@
             width: 100%; height: 100%;
             border: none;
         }
+        .video-embed iframe[data-src] {
+            visibility: hidden;
+        }
         .video-embed img {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             object-fit: cover;
             display: block;
+            opacity: 1;
         }
         .yt-play {
             position: absolute;
@@ -287,6 +314,10 @@
             cursor: pointer;
             transition: background 0.18s;
             pointer-events: none;
+            opacity: 0;
+        }
+        .video-embed.is-ready .yt-play {
+            opacity: 1;
         }
         .video-embed:hover .yt-play { background: #ff0000; }
         .yt-play::after {
@@ -784,7 +815,24 @@
                 var id = match[1];
                 var autoSrc = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
                 embed.dataset.ytSrc = autoSrc;
-                embed.innerHTML = '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy"><button class="yt-play" aria-label="Play video"></button>';
+                embed.innerHTML = '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy" decoding="async"><button class="yt-play" aria-label="Play video"></button>';
+                var poster = embed.querySelector('img');
+                var revealPoster = function() {
+                    var mediaGroup = embed.closest('.work-item, .showreel-section');
+                    embed.classList.add('is-ready');
+                    if (mediaGroup) {
+                        mediaGroup.classList.add('is-media-ready', 'is-media-revealing');
+                        window.setTimeout(function() {
+                            mediaGroup.classList.remove('is-media-revealing');
+                        }, 220);
+                    }
+                };
+                if (poster.complete) {
+                    requestAnimationFrame(revealPoster);
+                } else {
+                    poster.addEventListener('load', revealPoster, { once: true });
+                    poster.addEventListener('error', revealPoster, { once: true });
+                }
                 embed.addEventListener('click', function() {
                     var f = document.createElement('iframe');
                     f.src = embed.dataset.ytSrc;
