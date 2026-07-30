@@ -65,18 +65,66 @@
             align-items: center;
             gap: 5px;
             font-family: 'EB Garamond', Georgia, serif;
-            font-size: 13px;
-            color: var(--muted);
+            font-size: 14px;
+            color: var(--accent-hover);
             text-decoration: none;
-            border: 1px solid var(--border);
-            padding: 5px 14px;
-            border-radius: 2px;
+            background-color: #faf8f3;
+            border: 1px solid var(--block-border);
+            border-radius: 3px;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.82),
+                0 5px 16px rgba(65, 58, 48, 0.08);
+            padding: 7px 16px;
             letter-spacing: .04em;
-            transition: color 0.2s, border-color 0.2s;
-            margin-top: 30px;
+            transition:
+                color 0.2s,
+                border-color 0.2s,
+                background-color 0.2s,
+                box-shadow 0.2s;
+            margin-top: 24px;
         }
-        .cv-download:hover { color: var(--accent); border-color: var(--accent); }
-        .cv-download svg { fill: currentColor; }
+        .cv-download:hover {
+            color: var(--text);
+            border-color: rgba(138, 114, 82, 0.24);
+            background-color: #fffdf8;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                0 7px 18px rgba(65, 58, 48, 0.11);
+        }
+        .cv-download:focus-visible {
+            outline: 1px solid rgba(138, 114, 82, 0.55);
+            outline-offset: 4px;
+        }
+        .cv-download-floating {
+            position: fixed;
+            z-index: 20;
+            left: 50%;
+            bottom: max(18px, env(safe-area-inset-bottom));
+            margin: 0;
+            transform: translateX(-50%);
+            opacity: 1;
+            visibility: visible;
+        }
+        body.has-download-observer .cv-download-floating {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translate(-50%, 6px);
+            transition:
+                opacity 0.2s,
+                visibility 0.2s,
+                transform 0.2s,
+                color 0.2s,
+                border-color 0.2s,
+                background-color 0.2s,
+                box-shadow 0.2s;
+        }
+        body.has-download-observer.show-floating-download .cv-download-floating {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, 0);
+        }
 
         .cv-page {
             max-width: 920px;
@@ -86,10 +134,10 @@
 
         .cv-header {
             text-align: center;
-            margin-bottom: 72px;
+            margin-bottom: 48px;
         }
         .cv-header h1 {
-            font-family: 'Mynerve', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(40px, 6vw, 68px);
             font-weight: 400;
             letter-spacing: .02em;
@@ -260,10 +308,11 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 18px 24px; }
+            .site-nav .name { transform: scale(1.4); }
             .cv-page { padding: 32px 24px 80px; }
             .cv-block { padding: 28px 24px; }
             .site-nav .links { gap: 18px; }
-            .cv-header { margin-bottom: 54px; }
+            .cv-header { margin-bottom: 40px; }
             .cv-header .contact {
                 flex-direction: column;
                 align-items: center;
@@ -272,12 +321,38 @@
             .skill-key { min-width: 100%; }
         }
 
+        @media (max-width: 420px) {
+            .site-nav {
+                flex-direction: column;
+                justify-content: center;
+                gap: 12px;
+                padding: 18px 16px;
+            }
+            .site-nav .name {
+                transform: scale(1.25);
+                transform-origin: center;
+            }
+            .site-nav .links {
+                width: 100%;
+                justify-content: center;
+                gap: clamp(12px, 4.5vw, 18px);
+            }
+            .site-nav .links a { font-size: 15px; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .site-nav .name,
-            .site-nav .links a {
+            .site-nav .links a,
+            .cv-download {
                 transition: none;
             }
             .site-nav .links a:hover { transform: none; }
+        }
+
+        @media print {
+            .cv-download-floating {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -303,11 +378,11 @@
                 <span><a href="https://github.com/qianshuguo" target="_blank" rel="noopener noreferrer">GitHub</a></span>
                 <span><a href="https://qianshuguo.com">qianshuguo.com</a></span>
             </div>
-            <a class="cv-download" href="assets/cv/qianshu_guo-cv.pdf" download="qianshu_guo-cv.pdf">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/>
+            <a class="cv-download" href="assets/cv/qianshu_guo-cv.pdf" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/>
                 </svg>
-                Download PDF
+                View PDF
             </a>
         </div>
 
@@ -561,6 +636,28 @@
 
         </div><!-- /cv-content -->
     </div>
+
+    <a class="cv-download cv-download-floating" href="assets/cv/qianshu_guo-cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open CV PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/>
+        </svg>
+        View PDF
+    </a>
+
+    <script>
+        (function() {
+            var inlineDownload = document.querySelector('.cv-header .cv-download');
+            if (!inlineDownload || !('IntersectionObserver' in window)) return;
+
+            document.body.classList.add('has-download-observer');
+            new IntersectionObserver(function(entries) {
+                document.body.classList.toggle(
+                    'show-floating-download',
+                    entries[0].intersectionRatio < 1
+                );
+            }, { threshold: 1 }).observe(inlineDownload);
+        })();
+    </script>
 
 </body>
 </html>

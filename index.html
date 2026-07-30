@@ -30,28 +30,10 @@
             padding: 60px 40px;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            z-index: 0;
-            top: 43%;
-            left: 50%;
-            width: min(88vw, 920px);
-            aspect-ratio: 1;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(190, 149, 91, .25) 0,
-                rgba(190, 149, 91, .11) 38%,
-                rgba(190, 149, 91, 0) 72%
-            );
-            pointer-events: none;
-        }
-
         .hero > * {
             position: relative;
             z-index: 1;
+            animation: inner-page-arrive .38s cubic-bezier(.22, .72, .28, 1) both;
         }
 
         .hero h1 {
@@ -60,6 +42,11 @@
             font-weight: 400;
             letter-spacing: .01em;
             line-height: 1.1;
+            margin-bottom: 0;
+        }
+
+        .hero-name {
+            z-index: 0;
             margin-bottom: 20px;
         }
 
@@ -89,13 +76,16 @@
             padding: 7px 0;
             letter-spacing: .12em;
             transition:
-                color .28s ease,
-                letter-spacing .28s ease;
+                color .42s ease,
+                transform .32s ease;
         }
-        .hero-links a:hover,
+        .hero-links a:hover {
+            color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
         .hero-links a:focus-visible {
-            color: var(--accent);
-            letter-spacing: .15em;
+            outline: 1px solid rgba(138, 114, 82, 0.45);
+            outline-offset: 4px;
         }
 
         @media (max-width: 600px) {
@@ -107,19 +97,23 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .hero-links a {
-                transition: color .2s ease;
+            .hero > * {
+                animation: none;
             }
-            .hero-links a:hover,
-            .hero-links a:focus-visible {
-                letter-spacing: .12em;
+            .hero-links a {
+                transition: none;
+            }
+            .hero-links a:hover {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>Qianshu Guo</h1>
+        <div class="hero-name name-glow-anchor">
+            <h1>Qianshu Guo</h1>
+        </div>
         <p class="subtitle">FILM COMPOSER · SOUND DESIGNER</p>
         <div class="hero-links">
             <a href="works.html">Works</a>

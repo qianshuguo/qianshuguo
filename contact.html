@@ -165,8 +165,28 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 20px 24px; }
+            .site-nav .name { transform: scale(1.4); }
             .page-content { padding: 32px 24px 80px; }
             .site-nav .links { gap: 20px; }
+        }
+
+        @media (max-width: 420px) {
+            .site-nav {
+                flex-direction: column;
+                justify-content: center;
+                gap: 12px;
+                padding: 18px 16px;
+            }
+            .site-nav .name {
+                transform: scale(1.25);
+                transform-origin: center;
+            }
+            .site-nav .links {
+                width: 100%;
+                justify-content: center;
+                gap: clamp(12px, 4.5vw, 18px);
+            }
+            .site-nav .links a { font-size: 15px; }
         }
 
         @media (prefers-reduced-motion: reduce) {

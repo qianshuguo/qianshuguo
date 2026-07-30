@@ -24,13 +24,6 @@
 html {
     min-height: 100%;
     background-color: var(--bg);
-    background-image: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.22) 0,
-        rgba(255, 255, 255, 0) 280px
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 280px;
 }
 
 body {
@@ -52,29 +45,55 @@ body {
     background: rgba(181, 145, 94, .28);
 }
 
-/* A quieter echo of the homepage glow for inner-page title areas. */
-body.inner-page {
+/*
+ * Shared name glow. The anchor is placed before the rest of the page
+ * content, so the animated light remains underneath every text/control
+ * layer while staying centered on the name.
+ */
+.name-glow-anchor {
     position: relative;
     isolation: isolate;
 }
 
-body.inner-page::before {
+.name-glow-anchor::before {
     content: "";
     position: absolute;
     z-index: 0;
-    top: clamp(-180px, -12vw, -72px);
+    top: 50%;
     left: 50%;
-    width: min(78vw, 760px);
+    width: min(88vw, 920px);
     aspect-ratio: 1;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%) scale(.04);
+    transform-origin: center;
+    opacity: 0;
     border-radius: 50%;
     background: radial-gradient(
         circle,
-        rgba(190, 149, 91, .1) 0,
-        rgba(190, 149, 91, .045) 40%,
+        rgba(190, 149, 91, .25) 0,
+        rgba(190, 149, 91, .11) 38%,
         rgba(190, 149, 91, 0) 72%
     );
     pointer-events: none;
+    animation: name-glow-radiate .72s cubic-bezier(.16, .7, .2, 1) 0s both;
+}
+
+.name-glow-anchor > h1 {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes name-glow-radiate {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.04);
+    }
+    2% {
+        opacity: .78;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 body.inner-page > .site-nav,
@@ -86,13 +105,13 @@ body.inner-page > .cv-page {
 
 body.inner-page > .page-content,
 body.inner-page > .cv-page {
-    animation: inner-page-arrive .48s cubic-bezier(.22, .72, .28, 1);
+    animation: inner-page-arrive .38s cubic-bezier(.22, .72, .28, 1);
 }
 
 @keyframes inner-page-arrive {
     from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(4px);
     }
     to {
         opacity: 1;
@@ -101,6 +120,12 @@ body.inner-page > .cv-page {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .name-glow-anchor::before {
+        animation: none;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
     body.inner-page > .page-content,
     body.inner-page > .cv-page {
         animation: none;
@@ -108,7 +133,7 @@ body.inner-page > .cv-page {
 }
 
 @media print {
-    body.inner-page::before {
+    .name-glow-anchor::before {
         display: none;
     }
 
