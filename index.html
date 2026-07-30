@@ -5,6 +5,7 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='theme-color' content='#f5f2eb'/>
+    <link rel="preload" href="assets/fonts/Mynerve-Qianshu.woff2?v=2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/CormorantGaramond-MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,6 +18,9 @@
         }
 
         .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -26,8 +30,32 @@
             padding: 60px 40px;
         }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            top: 43%;
+            left: 50%;
+            width: min(88vw, 920px);
+            aspect-ratio: 1;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(190, 149, 91, .25) 0,
+                rgba(190, 149, 91, .11) 38%,
+                rgba(190, 149, 91, 0) 72%
+            );
+            pointer-events: none;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Mynerve', cursive;
             font-size: clamp(52px, 8vw, 96px);
             font-weight: 400;
             letter-spacing: .01em;
@@ -36,12 +64,13 @@
         }
 
         .hero .subtitle {
-            font-size: 24px;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: clamp(16px, 1.6vw, 18px);
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: .14em;
             color: var(--muted);
-            margin-bottom: 60px;
+            margin-bottom: 68px;
         }
 
         .hero-links {
@@ -51,26 +80,47 @@
         }
 
         .hero-links a {
+            display: block;
             font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 4vw, 42px);
+            font-size: clamp(20px, 2.2vw, 27px);
             font-weight: 400;
             color: var(--text);
             text-decoration: none;
-            padding: 10px 0;
-            letter-spacing: .01em;
-            transition: color 0.2s;
+            padding: 7px 0;
+            letter-spacing: .12em;
+            transition:
+                color .28s ease,
+                letter-spacing .28s ease;
         }
-        .hero-links a:hover { color: var(--accent); }
+        .hero-links a:hover,
+        .hero-links a:focus-visible {
+            color: var(--accent);
+            letter-spacing: .15em;
+        }
 
         @media (max-width: 600px) {
             .hero { padding: 60px 24px; }
+            .hero .subtitle {
+                font-size: 14px;
+                letter-spacing: .1em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-links a {
+                transition: color .2s ease;
+            }
+            .hero-links a:hover,
+            .hero-links a:focus-visible {
+                letter-spacing: .12em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>Qianshu Guo</h1>
-        <p class="subtitle">Film Composer &amp; Sound Designer</p>
+        <p class="subtitle">FILM COMPOSER · SOUND DESIGNER</p>
         <div class="hero-links">
             <a href="works.html">Works</a>
             <a href="about.html">About</a>

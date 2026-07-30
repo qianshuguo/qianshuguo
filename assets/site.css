@@ -41,3 +41,79 @@ body {
     font-size: 17px;
     line-height: 1.7;
 }
+
+::selection {
+    color: var(--text);
+    background: rgba(181, 145, 94, .28);
+}
+
+::-moz-selection {
+    color: var(--text);
+    background: rgba(181, 145, 94, .28);
+}
+
+/* A quieter echo of the homepage glow for inner-page title areas. */
+body.inner-page {
+    position: relative;
+    isolation: isolate;
+}
+
+body.inner-page::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: clamp(-180px, -12vw, -72px);
+    left: 50%;
+    width: min(78vw, 760px);
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(190, 149, 91, .1) 0,
+        rgba(190, 149, 91, .045) 40%,
+        rgba(190, 149, 91, 0) 72%
+    );
+    pointer-events: none;
+}
+
+body.inner-page > .site-nav,
+body.inner-page > .page-content,
+body.inner-page > .cv-page {
+    position: relative;
+    z-index: 1;
+}
+
+body.inner-page > .page-content,
+body.inner-page > .cv-page {
+    animation: inner-page-arrive .48s cubic-bezier(.22, .72, .28, 1);
+}
+
+@keyframes inner-page-arrive {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.inner-page > .page-content,
+    body.inner-page > .cv-page {
+        animation: none;
+    }
+}
+
+@media print {
+    body.inner-page::before {
+        display: none;
+    }
+
+    body.inner-page > .page-content,
+    body.inner-page > .cv-page {
+        animation: none;
+    }
+}

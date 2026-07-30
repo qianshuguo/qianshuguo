@@ -5,6 +5,8 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='theme-color' content='#f5f2eb'/>
+    <link rel="preload" href="assets/fonts/Mynerve-Qianshu.woff2?v=2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/CormorantGaramond-MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link href="assets/fonts/fonts.css" rel="stylesheet">
@@ -22,12 +24,15 @@
             padding: 24px 48px;
         }
         .site-nav .name {
-            font-family: 'Playfair Display', serif;
+            display: inline-block;
+            font-family: 'Mynerve', cursive;
             font-size: 17px;
             font-weight: 500;
             letter-spacing: .04em;
             text-decoration: none;
             color: var(--text);
+            transform: scale(1.65);
+            transform-origin: left center;
             transition: color 0.42s ease;
         }
         .site-nav .name:hover { color: var(--accent-hover); }
@@ -400,7 +405,7 @@
         }
     </style>
 </head>
-<body>
+<body class="inner-page">
 
     <nav class="site-nav">
         <a class="name" href="index.html">Qianshu Guo</a>
