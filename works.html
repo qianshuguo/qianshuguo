@@ -71,9 +71,19 @@
             justify-content: space-between;
             align-items: baseline;
             gap: 32px;
-            margin: 104px 0 64px;
-            padding-top: 22px;
-            border-top: 1px solid var(--border);
+            margin: 104px 0 48px;
+        }
+
+        .works-browser {
+            opacity: 0;
+            transform: translateY(18px);
+            transition:
+                opacity 0.48s cubic-bezier(.22, .72, .28, 1),
+                transform 0.48s cubic-bezier(.22, .72, .28, 1);
+        }
+        .works-browser.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .filter-label {
             flex: 0 0 auto;
@@ -194,7 +204,10 @@
             display: grid;
             grid-template-columns: minmax(0, 1fr) 250px;
             align-items: stretch;
+            align-content: center;
             gap: clamp(42px, 5vw, 64px);
+            min-height: calc(100vh - 260px);
+            min-height: calc(100svh - 260px);
             padding-top: 10px;
         }
         .showreel-text {
@@ -411,7 +424,9 @@
         @media (max-width: 820px) {
             .showreel-section {
                 grid-template-columns: 1fr;
+                align-content: normal;
                 gap: 30px;
+                min-height: 0;
             }
             .showreel-text {
                 display: block;
@@ -491,6 +506,9 @@
             .sc-play-btn {
                 transition: none;
             }
+            .works-browser {
+                transition: none;
+            }
             .site-nav .links a:hover { transform: none; }
             .work-item.is-revealing { animation: none; }
         }
@@ -537,19 +555,20 @@
             </div>
         </div>
 
-        <section class="filter-section" id="works-filter" aria-labelledby="works-filter-label">
-            <div class="filter-label" id="works-filter-label">Browse works</div>
-            <div class="filter-tabs" role="group" aria-label="Filter works by category">
-                <button type="button" class="active" data-filter="movies" aria-pressed="true">Films</button>
-                <button type="button" data-filter="compositions" aria-pressed="false">Compositions</button>
-                <button type="button" data-filter="trailers" aria-pressed="false">Trailers</button>
-                <button type="button" data-filter="video-games" aria-pressed="false">Game</button>
-                <button type="button" data-filter="sound-design" aria-pressed="false">Sound Design</button>
-                <button type="button" data-filter="soundtracks" aria-pressed="false">Soundtracks</button>
-            </div>
-        </section>
+        <div class="works-browser" id="works-browser">
+            <section class="filter-section" id="works-filter" aria-labelledby="works-filter-label">
+                <div class="filter-label" id="works-filter-label">Browse works</div>
+                <div class="filter-tabs" role="group" aria-label="Filter works by category">
+                    <button type="button" class="active" data-filter="movies" aria-pressed="true">Films</button>
+                    <button type="button" data-filter="compositions" aria-pressed="false">Compositions</button>
+                    <button type="button" data-filter="trailers" aria-pressed="false">Trailers</button>
+                    <button type="button" data-filter="video-games" aria-pressed="false">Game</button>
+                    <button type="button" data-filter="sound-design" aria-pressed="false">Sound Design</button>
+                    <button type="button" data-filter="soundtracks" aria-pressed="false">Soundtracks</button>
+                </div>
+            </section>
 
-        <div id="works-list">
+            <div id="works-list">
 
             <!-- Compositions -->
             <div class="work-item" data-category="compositions">
@@ -868,9 +887,10 @@
                 </div>
             </div>
 
-        </div>
+            </div>
 
-        <p class="no-results" id="no-results">No works in this category yet.</p>
+            <p class="no-results" id="no-results">No works in this category yet.</p>
+        </div>
 
     </div>
 
@@ -878,6 +898,16 @@
         const tabs = Array.from(document.querySelectorAll('.filter-tabs button'));
         const items = document.querySelectorAll('.work-item');
         const noResults = document.getElementById('no-results');
+        const worksBrowser = document.getElementById('works-browser');
+
+        function updateWorksVisibility() {
+            worksBrowser.classList.toggle('is-visible', window.scrollY > 2);
+        }
+
+        updateWorksVisibility();
+        window.addEventListener('scroll', updateWorksVisibility, {
+            passive: true
+        });
 
         /* ── YouTube facade ── */
         function setupYouTubeFacades() {
