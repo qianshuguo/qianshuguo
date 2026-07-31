@@ -17,49 +17,6 @@
             --block-border: rgba(65, 58, 48, 0.10);
         }
 
-        .site-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 48px;
-        }
-        .site-nav .name {
-            display: inline-block;
-            font-family: 'Mynerve', cursive;
-            font-size: 17px;
-            font-weight: 500;
-            letter-spacing: .04em;
-            text-decoration: none;
-            color: var(--text);
-            transform: scale(1.65);
-            transform-origin: left center;
-            transition: color 0.42s ease;
-        }
-        .site-nav .name:hover { color: var(--accent-hover); }
-        .site-nav .links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-        .site-nav .links a {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 16px;
-            color: var(--link);
-            text-decoration: none;
-            letter-spacing: .04em;
-            transition: color 0.42s ease, transform 0.32s ease;
-        }
-        .site-nav .links a:hover {
-            color: var(--accent-hover);
-            transform: translateY(-1px);
-        }
-        .site-nav .links a[aria-current="page"] {
-            color: var(--accent);
-        }
-        .site-nav .links a:focus-visible {
-            outline: 1px solid rgba(138, 114, 82, 0.45);
-            outline-offset: 4px;
-        }
         .cv-download {
             display: inline-flex;
             align-items: center;
@@ -317,7 +274,6 @@
 
         @media (max-width: 600px) {
             .site-nav { padding: 18px 24px; }
-            .site-nav .name { transform: scale(1.4); }
             .cv-page { padding: 32px 24px 80px; }
             .cv-block { padding: 28px 24px; }
             .site-nav .links { gap: 18px; }
@@ -331,31 +287,14 @@
         }
 
         @media (max-width: 420px) {
-            .site-nav {
-                flex-direction: column;
-                justify-content: center;
-                gap: 12px;
-                padding: 18px 16px;
-            }
-            .site-nav .name {
-                transform: scale(1.25);
-                transform-origin: center;
-            }
-            .site-nav .links {
-                width: 100%;
-                justify-content: center;
-                gap: clamp(12px, 4.5vw, 18px);
-            }
-            .site-nav .links a { font-size: 15px; }
+            .site-nav { padding: 18px 16px; }
+            .site-nav .links { gap: clamp(12px, 4.5vw, 18px); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .site-nav .name,
-            .site-nav .links a,
             .cv-download {
                 transition: none;
             }
-            .site-nav .links a:hover { transform: none; }
         }
 
         @media print {
