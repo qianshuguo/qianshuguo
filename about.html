@@ -9,6 +9,7 @@
     <link rel="preload" href="assets/fonts/CormorantGaramond-MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/pics/26-linkedin-1-ps.jpg" as="image">
     <link href="assets/fonts/fonts.css" rel="stylesheet">
     <link href="assets/site.css" rel="stylesheet">
     <style>
@@ -98,8 +99,14 @@
             display: block;
             width: 100%;
             height: auto;
+            opacity: 0;
             border: 1px solid rgba(49, 44, 38, 0.16);
             box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.42);
+            transition: opacity 0.3s ease;
+        }
+
+        .about-portrait img.is-ready {
+            opacity: 1;
         }
 
         .about-copy {
@@ -161,7 +168,8 @@
 
         @media (prefers-reduced-motion: reduce) {
             .site-nav .name,
-            .site-nav .links a {
+            .site-nav .links a,
+            .about-portrait img {
                 transition: none;
             }
             .site-nav .links a:hover { transform: none; }
@@ -190,6 +198,7 @@
                     width="1280"
                     height="1707"
                     decoding="async"
+                    fetchpriority="high"
                 >
             </figure>
             <div class="about-copy">
@@ -200,5 +209,29 @@
         </div>
     </div>
 
+    <noscript>
+        <style>.about-portrait img { opacity: 1; }</style>
+    </noscript>
+    <script>
+        const portrait = document.querySelector('.about-portrait img');
+
+        const revealPortrait = () => {
+            requestAnimationFrame(() => portrait.classList.add('is-ready'));
+        };
+
+        if ('decode' in portrait) {
+            portrait.decode().then(revealPortrait).catch(() => {
+                if (portrait.complete && portrait.naturalWidth) {
+                    revealPortrait();
+                } else {
+                    portrait.addEventListener('load', revealPortrait, { once: true });
+                }
+            });
+        } else if (portrait.complete && portrait.naturalWidth) {
+            revealPortrait();
+        } else {
+            portrait.addEventListener('load', revealPortrait, { once: true });
+        }
+    </script>
 </body>
 </html>
