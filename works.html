@@ -20,7 +20,7 @@
         .page-content {
             max-width: 1120px;
             margin: 0 auto;
-            padding: 52px 40px 112px;
+            padding: 0 40px 112px;
         }
 
         /* ── Filter tabs ── */
@@ -32,21 +32,6 @@
             margin: 104px 0 48px;
         }
 
-        .works-browser {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .works-browser.is-enhanced {
-            opacity: 0;
-            transform: translateY(18px);
-            transition:
-                opacity 0.48s cubic-bezier(.22, .72, .28, 1),
-                transform 0.48s cubic-bezier(.22, .72, .28, 1);
-        }
-        .works-browser.is-enhanced.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
         .filter-label {
             flex: 0 0 auto;
             font-size: 11px;
@@ -163,56 +148,58 @@
 
         /* ── Showreel ── */
         .showreel-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: calc(100vh - 77px);
+            min-height: calc(100svh - 77px);
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .showreel-program {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 250px;
-            align-items: stretch;
-            align-content: center;
-            gap: clamp(42px, 5vw, 64px);
-            min-height: calc(100vh - 260px);
-            min-height: calc(100svh - 260px);
-            padding-top: 10px;
+            grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+            gap: clamp(48px, 6vw, 72px);
+            margin-top: 28px;
+            padding-top: 0;
         }
         .showreel-text {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            min-width: 0;
-        }
-        .showreel-heading,
-        .showreel-copy {
-            min-width: 0;
-        }
-        .showreel-copy {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 22px;
+            margin: 0;
+            text-align: left;
         }
         .showreel-label {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 4.5vw, 52px);
+            font-size: clamp(36px, 3.5vw, 40px);
             font-weight: 400;
-            line-height: 1;
-            letter-spacing: -.01em;
+            line-height: 1.05;
+            letter-spacing: -.02em;
             color: var(--text);
-            margin-bottom: 0;
-            transform: translateY(-0.11em);
+            margin: 0 0 12px;
+        }
+        .showreel-copy {
+            margin: 0 auto;
         }
         .showreel-desc {
-            width: 100%;
-            font-size: 16px;
-            line-height: 1.55;
+            font-size: 15px;
+            line-height: 1.6;
             color: var(--muted);
         }
+        .showreel-meta {
+            justify-self: end;
+            width: min(100%, 430px);
+            margin: 0;
+            padding: clamp(50px, 5vw, 54px) 0 0;
+            text-align: right;
+        }
         .showreel-featured {
-            margin-top: 24px;
+            display: block;
         }
         .showreel-featured-label {
             display: block;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
             font-size: 10px;
-            letter-spacing: .17em;
+            letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--accent);
         }
@@ -220,32 +207,30 @@
             list-style: none;
         }
         .showreel-featured li {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: 'EB Garamond', Georgia, serif;
             font-size: 15px;
-            font-weight: 500;
-            line-height: 1.4;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.35;
             color: var(--muted);
         }
-        .showreel-featured li + li {
-            margin-top: 2px;
-        }
+        .showreel-featured li + li { margin-top: 1px; }
         .scroll-cue {
             display: inline-flex;
-            align-self: flex-start;
             align-items: center;
             gap: 8px;
-            margin-top: auto;
-            padding-top: 22px;
-            color: var(--muted);
-            font-size: 11px;
-            letter-spacing: .14em;
+            margin: 12px 0 0;
+            color: var(--accent-hover);
+            font-size: 13px;
+            letter-spacing: .1em;
             line-height: 1;
             text-decoration: none;
             text-transform: uppercase;
-            transform: translateY(0.1em);
             transition: color 0.30s ease;
         }
-        .scroll-cue:hover { color: var(--accent-hover); }
+        .scroll-cue:hover {
+            color: var(--text);
+        }
         .scroll-cue:focus-visible {
             outline: 1px solid rgba(138, 114, 82, 0.45);
             outline-offset: 4px;
@@ -270,9 +255,7 @@
         }
         .showreel-section .video-embed {
             margin-top: 0;
-            box-shadow:
-                0 3px 7px rgba(65, 58, 48, 0.10),
-                0 14px 32px rgba(65, 58, 48, 0.17);
+            box-shadow: 0 10px 28px rgba(65, 58, 48, 0.12);
         }
         .video-embed iframe {
             position: absolute;
@@ -385,26 +368,37 @@
 
         @media (max-width: 820px) {
             .showreel-section {
-                grid-template-columns: 1fr;
-                align-content: normal;
-                gap: 30px;
                 min-height: 0;
+                padding-top: 52px;
+            }
+            .showreel-program {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-top: 24px;
+                padding-top: 24px;
             }
             .showreel-text {
-                display: block;
-                max-width: 680px;
+                text-align: center;
             }
-            .showreel-label,
-            .scroll-cue {
-                transform: none;
-            }
-            .showreel-copy {
-                display: block;
-            }
-            .scroll-cue {
-                margin-top: 22px;
+            .showreel-meta {
+                justify-self: stretch;
+                width: 100%;
                 padding-top: 0;
+                text-align: center;
             }
+            .showreel-featured {
+                display: block;
+            }
+            .showreel-featured-label {
+                margin-bottom: 7px;
+            }
+            .showreel-featured ul {
+                display: block;
+            }
+            .showreel-featured li + li {
+                margin-top: 1px;
+            }
+            .scroll-cue { margin: 18px 0 0; }
             .filter-section {
                 display: block;
                 margin-top: 80px;
@@ -427,6 +421,8 @@
 
         @media (max-width: 600px) {
             .page-content { padding: 28px 24px 80px; }
+            .showreel-section { padding-top: 36px; }
+            .showreel-desc { font-size: 15px; }
             .filter-section {
                 margin-top: 72px;
                 margin-bottom: 48px;
@@ -442,9 +438,6 @@
             html { scroll-behavior: auto; }
             .filter-tabs button,
             .sc-play-btn {
-                transition: none;
-            }
-            .works-browser {
                 transition: none;
             }
             .work-item.is-revealing { animation: none; }
@@ -465,32 +458,38 @@
 
     <div class="page-content">
         <!-- Showreel -->
-        <div class="showreel-section">
-            <div class="video-embed">
-                <iframe data-src="https://www.youtube.com/embed/WJOovnEl3wg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-            </div>
-            <div class="showreel-text">
-                <div class="showreel-heading">
-                    <h1 class="showreel-label">Showreel</h1>
+        <section class="showreel-section" aria-labelledby="showreel-title">
+            <div class="showreel-stage">
+                <div class="video-embed">
+                    <iframe data-src="https://www.youtube.com/embed/WJOovnEl3wg" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
-                <div class="showreel-copy">
-                    <p class="showreel-desc">A selection of film scoring, concert composition, game audio, and sound design from recent years—moving between orchestral writing, jazz harmony, electronics, and contemporary textures.</p>
+            </div>
+            <div class="showreel-program">
+                <div class="showreel-text">
+                    <div class="showreel-heading">
+                        <h1 class="showreel-label" id="showreel-title">Showreel</h1>
+                    </div>
+                    <div class="showreel-copy">
+                        <p class="showreel-desc">This video brings together some of my favorite scoring and composition work from the past several years. It reflects the way I think about music and my interest in blending cinematic storytelling with orchestral writing, jazz harmony, electronic textures, sound design, and contemporary composition.</p>
+                    </div>
+                </div>
+                <div class="showreel-meta">
                     <div class="showreel-featured">
                         <span class="showreel-featured-label">Featuring</span>
                         <ul>
-                            <li><em>Confronting the Masked Re-score</em></li>
-                            <li><em>Ghost of Tsushima Original Score</em></li>
-                            <li><em>Trail of Light Original Score</em></li>
-                            <li><em>Glimmers</em></li>
+                            <li>Confronting the Masked Re-score</li>
+                            <li>Ghost of Tsushima Original Score</li>
+                            <li>Trail of Light Original Score</li>
+                            <li>Glimmers</li>
                         </ul>
                     </div>
                     <a class="scroll-cue" href="#works-filter">
-                        <span>Explore all works</span>
+                        <span>View all works</span>
                         <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div class="works-browser" id="works-browser">
             <section class="filter-section" id="works-filter" aria-labelledby="works-filter-label">
@@ -835,18 +834,6 @@
         const tabs = Array.from(document.querySelectorAll('.filter-tabs button'));
         const items = document.querySelectorAll('.work-item');
         const noResults = document.getElementById('no-results');
-        const worksBrowser = document.getElementById('works-browser');
-
-        worksBrowser.classList.add('is-enhanced');
-
-        function updateWorksVisibility() {
-            worksBrowser.classList.toggle('is-visible', window.scrollY > 2);
-        }
-
-        updateWorksVisibility();
-        window.addEventListener('scroll', updateWorksVisibility, {
-            passive: true
-        });
 
         /* ── YouTube facade ── */
         function setupYouTubeFacades() {
