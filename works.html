@@ -104,7 +104,7 @@
 
         .work-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(20px, 2.2vw, 24px);
+            font-size: clamp(18px, 1.9vw, 21px);
             font-weight: 400;
             line-height: 1.25;
             margin-bottom: 9px;
@@ -159,7 +159,7 @@
         }
         .showreel-program {
             display: grid;
-            grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+            grid-template-columns: minmax(0, 0.83fr) minmax(0, 1.22fr);
             gap: clamp(48px, 6vw, 72px);
             margin-top: 28px;
             padding-top: 0;
@@ -194,10 +194,14 @@
         }
         .showreel-featured {
             display: block;
+            position: relative;
         }
         .showreel-featured-label {
             display: block;
-            margin-bottom: 8px;
+            position: absolute;
+            right: 0;
+            bottom: calc(100% + 8px);
+            margin-bottom: 0;
             font-size: 10px;
             letter-spacing: .16em;
             text-transform: uppercase;
@@ -211,25 +215,38 @@
             font-size: 15px;
             font-weight: 400;
             font-style: normal;
-            line-height: 1.35;
+            line-height: 1.6;
             color: var(--muted);
         }
-        .showreel-featured li + li { margin-top: 1px; }
+        .showreel-featured li + li { margin-top: 0; }
+        .showreel-footer {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-top: 32px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
         .scroll-cue {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin: 12px 0 0;
+            margin: 0;
+            padding: 3px 0;
             color: var(--accent-hover);
             font-size: 13px;
+            font-weight: 500;
             letter-spacing: .1em;
             line-height: 1;
             text-decoration: none;
             text-transform: uppercase;
-            transition: color 0.30s ease;
+            transition:
+                color 0.30s ease,
+                transform 0.30s ease;
         }
         .scroll-cue:hover {
             color: var(--text);
+            transform: translateY(2px);
         }
         .scroll-cue:focus-visible {
             outline: 1px solid rgba(138, 114, 82, 0.45);
@@ -390,15 +407,19 @@
                 display: block;
             }
             .showreel-featured-label {
+                position: static;
                 margin-bottom: 7px;
             }
             .showreel-featured ul {
                 display: block;
             }
             .showreel-featured li + li {
-                margin-top: 1px;
+                margin-top: 0;
             }
-            .scroll-cue { margin: 18px 0 0; }
+            .showreel-footer {
+                justify-content: center;
+                margin-top: 28px;
+            }
             .filter-section {
                 display: block;
                 margin-top: 80px;
@@ -483,11 +504,13 @@
                             <li>Glimmers</li>
                         </ul>
                     </div>
-                    <a class="scroll-cue" href="#works-filter">
-                        <span>View all works</span>
-                        <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
-                    </a>
                 </div>
+            </div>
+            <div class="showreel-footer">
+                <a class="scroll-cue" href="#works-filter">
+                    <span>Explore All Projects</span>
+                    <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
+                </a>
             </div>
         </section>
 

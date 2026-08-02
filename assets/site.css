@@ -47,7 +47,7 @@ body {
     font-family: 'Mynerve', cursive;
     font-size: 17px;
     font-weight: 400;
-    letter-spacing: .04em;
+    letter-spacing: -.02em;
     text-decoration: none;
     color: var(--text);
     transform: scale(1.65);
