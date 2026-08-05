@@ -122,12 +122,12 @@ body {
     border-radius: 50%;
     background: radial-gradient(
         circle,
-        rgba(190, 149, 91, .25) 0,
-        rgba(190, 149, 91, .11) 38%,
+        rgba(190, 149, 91, .36) 0,
+        rgba(190, 149, 91, .17) 38%,
         rgba(190, 149, 91, 0) 72%
     );
     pointer-events: none;
-    animation: name-glow-radiate .72s cubic-bezier(.16, .7, .2, 1) 0s both;
+    animation: name-glow-radiate 1.6s cubic-bezier(.16, .7, .2, 1) .12s both;
 }
 
 .name-glow-anchor > h1 {
