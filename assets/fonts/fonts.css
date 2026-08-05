@@ -1,7 +1,7 @@
-/* Mynerve — handwritten name mark */
+/* Mynerve — deterministic handwritten name mark */
 @font-face {
     font-family: 'Mynerve';
-    src: url('Mynerve-Qianshu.woff2?v=2') format('woff2');
+    src: url('Mynerve-Qianshu-Wordmark.woff2?v=4') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: block;
