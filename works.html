@@ -868,7 +868,21 @@
                 var id = match[1];
                 var autoSrc = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
                 embed.dataset.ytSrc = autoSrc;
-                embed.innerHTML = '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy"><button class="yt-play" aria-label="Play video"></button>';
+                var thumbnailQuality = embed.closest('.showreel-section') ? 'maxresdefault' : 'hqdefault';
+                var thumbnail = document.createElement('img');
+                thumbnail.src = 'https://img.youtube.com/vi/' + id + '/' + thumbnailQuality + '.jpg';
+                thumbnail.alt = '';
+                thumbnail.loading = 'lazy';
+                if (thumbnailQuality === 'maxresdefault') {
+                    thumbnail.addEventListener('error', function() {
+                        thumbnail.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
+                    }, { once: true });
+                }
+                var playButton = document.createElement('button');
+                playButton.className = 'yt-play';
+                playButton.type = 'button';
+                playButton.setAttribute('aria-label', 'Play video');
+                embed.replaceChildren(thumbnail, playButton);
                 embed.addEventListener('click', function() {
                     var f = document.createElement('iframe');
                     f.src = embed.dataset.ytSrc;
