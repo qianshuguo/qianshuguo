@@ -866,8 +866,10 @@
                 var match = src.match(/embed\/([^?&]+)/);
                 if (!match) return;
                 var id = match[1];
-                var autoSrc = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
-                embed.dataset.ytSrc = autoSrc;
+                var playerUrl = new URL(src);
+                playerUrl.searchParams.set('autoplay', '1');
+                playerUrl.searchParams.set('cc_load_policy', '0');
+                embed.dataset.ytSrc = playerUrl.toString();
                 var thumbnailQuality = embed.closest('.showreel-section') ? 'maxresdefault' : 'hqdefault';
                 var thumbnail = document.createElement('img');
                 thumbnail.src = 'https://img.youtube.com/vi/' + id + '/' + thumbnailQuality + '.jpg';
